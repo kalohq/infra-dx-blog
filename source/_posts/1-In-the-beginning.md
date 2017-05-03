@@ -77,6 +77,11 @@ An amazing effort by Yannis on this work. By parallelising our test runs, removi
 
 This isn't all. We improved the feedback loop by notifying sooner than Circle on individual step failures. It's common for circle to continue running after a test failure so you don't get any notification until *some time later*. Now we let you know in slack *as soon* as something goes wrong! SWEET.
 
+<br/>
+![notifications](./quick-notifications.png)
+<center>Always good news first.</center>
+<br/>
+
 You can take a look at the work [here](https://github.com/lystable/lystable-frontend/pull/1830) and [here](https://github.com/lystable/lystable-frontend/pull/1779).
 
 > We definitely won't be stopping here forever. When we pick this up in the future the new aim will be for under 15 minutes!

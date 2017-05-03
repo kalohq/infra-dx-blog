@@ -48,9 +48,7 @@ One of our big focuses as an engineering team in Q2 is on performance around our
 
 On the one end we have a shiny new [generic tracking service](https://github.com/lystable/tracking) with the awesome [kibana 5](https://www.elastic.co/blog/kibana-5-0-0-released) front-end for building dashboards. On the front-end we now have some [benchmarking utilities](https://github.com/lystable/lystable-frontend/pull/1787) and a basic [tracking api](https://github.com/lystable/lystable-frontend/pull/1806) which acts as an interface to the back-end.
 
-<br/>
 ![front-end performance dashboard](./fe-perf.png)
-<br/>
 
 Above you can see one of our new dashboards for monitoring front-end performance. With these we will be able to get solid key metrics to track with the result being to deliver a faster and more responsive experience to our users!
 
@@ -58,11 +56,13 @@ Above you can see one of our new dashboards for monitoring front-end performance
 
 #### Monitoring portal
 
-With all these new monitoring and tracking services it was beginning to be a bit of a pain to try and remember how to find anything. So we decided to throw together a quick monitoring portal! You can find that at [monitoring.lystable.com](monitoring.lystable.com)
+With all these new monitoring and tracking services it was beginning to be a bit of a pain to try and remember how to find anything. You're probably even thinking *"where are those shiny performance dashboards you just teased us with?!"*.
 
-<br/>
+Well, we decided to throw together a quick monitoring portal so now there's just one thing to remember! You can find that at [monitoring.lystable.com](monitoring.lystable.com)
+
 ![monitoring portal](./monitoring-portal.png)
-<br/>
+
+> This actually sparked a bit more of an idea in my mind that we could have a portal for *all* things. Anyway, another time...
 
 #### Massive CI feedback improvements
 
@@ -70,6 +70,7 @@ With all these new monitoring and tracking services it was beginning to be a bit
 
 <br/>
 ![under 30min builds](./under-30mins.png)
+<center>Beautiful.</center>
 <br/>
 
 An amazing effort by Yannis on this work. By parallelising our test runs, removing some build redundnacy and mastering Tetris we were able to practically halve our wild build times.
@@ -108,9 +109,7 @@ What's the plan, batman?
 
 #### PaaS: Platform as a service!
 
-<br/>
 ![mesos](https://mesosphere.com/wp-content/themes/mesosphere/library/images/views/why-mesos/mesos-logo.png?v1)
-<br/>
 
 Boom! As part of a drive to enable truly autonymous crews who can ship all the time we are looking to deliver a PaaS. This should allow teams to easily create and orchestrate releases of new work with a focus being on the back-end services initially.
 
@@ -122,10 +121,9 @@ Check out [INFRA-31](https://lystable.atlassian.net/browse/INFRA-31) to track th
 
 On the front-end to reduce the initial time it takes for users to download and start using the application we will be looking at optimising our delivered bundles.
 
-Our current bundle looks something like this:
-
 <br/>
 ![](https://pbs.twimg.com/media/C7JTmf1W4AEJSfI.jpg:large)
+<center>Our current bundle looks something like this ^</center>
 <br/>
 
 The work here will have two focuses:

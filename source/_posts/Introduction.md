@@ -6,4 +6,4 @@ tags:
 
 ## Yo
 
-Wassup
+Wassup, man!

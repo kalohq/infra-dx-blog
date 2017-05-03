@@ -1,9 +1,6 @@
 menu:
-    Blog: /
+    Infra DX Blog: /
     Archive: /archives/
-    Weibo: http://weibo.com/sunchongsheng
-    GitHub: https://github.com/pinggod
-    Rss: /atom.xml
 
 favicon: /favicon.png
 logo: /favicon.png

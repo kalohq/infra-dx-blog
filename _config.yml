@@ -7,7 +7,7 @@ title: Infra DX Blog
 subtitle:
 description: All things Infrastructure and Developer Experience @Lystable
 author: Infra DX Crew
-language: EN
+language: en
 timezone:
 
 # URL
@@ -64,6 +64,12 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: apollo
+
+archive_generator:
+  per_page: 0
+  yearly: false
+  monthly: false
+  daily: false
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

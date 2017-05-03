@@ -136,6 +136,16 @@ There's a few pieces of work to move towards this but the main gist of it is a) 
 Check out [INFRA-18](https://lystable.atlassian.net/browse/INFRA-18) to track the work.
 
 
+## Cya!
+
+Okay time for me to wrap up this post. I'll leave you with Yannis' overight airport sleeping dilemma.
+
+
+![](./yannis-airport.jpg)
+<center><i>"Just not sure if its gonna work with my height"</i></center>
+<br/>
+
+
 > This first post was probably a bit more lengthy than future posts. There's also a distinct lack of memes.
 >
 > Hope you found it useful still!

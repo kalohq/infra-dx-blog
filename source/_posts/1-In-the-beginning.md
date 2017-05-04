@@ -4,7 +4,15 @@ date: 2017-05-03 21:01:48
 ---
 
 > This is a sprintly summary of upcoming, delivered and in-progress work for the **Infra DX Crew**.
-> It'll contain technical musings, <SOMETHING ELSE> and probably a few memes.
+> It'll contain technical musings and probably a few memes.
+> 
+> #### TLDR
+> 
+> - We (Infra DX Crew) Blog to summarise what we're doing (with value) and experiences
+> - Front-end builds take HALF THE BLOODY TIME reducing the turnaround time of devs
+> - We now have some awesome performance metrics to improve the user experience
+> - We're now kicking off work to reduce those gnarly performance numbers
+> - Work on a PaaS MVP is underway to allow crews to deliver faster and more autonomously 
 
 ## First post, WOW!
 
@@ -12,7 +20,7 @@ This is the first post of a near infinite series. We were wondering, in the newl
 
 On top of the day-to-day communication in Slack we wanted to put together a summary of our sprints where we could keep a nice archive of all our progress and experiences. We wanted this to be a little more engaging and put a personal twist on it so thought a **blog** would be the perfect medium for that! Writing up our experiences on a semi-regular basis should also help us consolidate our direction better.
 
-So I quickly (with a lot of face palming) threw together a blog using [hexo](https://hexo.io) and here we are...
+So I quickly (with a lot of face palming) threw together a blog using [hexo](https://hexo.io), created a new Lystable theme and here we are...
 
 <br/>
 <center>**The Infra DX Blog!**</center>
@@ -139,7 +147,6 @@ The work here will have two focuses:
 There's a few pieces of work to move towards this but the main gist of it is a) only deliver what the user needs for their current view (code splitting) and b) just optimise the hell out of and reduce redundnacy of all the code we ship down the wire.
 
 Check out [INFRA-18](https://lystable.atlassian.net/browse/INFRA-18) to track the work.
-
 
 ## Cya!
 

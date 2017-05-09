@@ -1,6 +1,7 @@
 menu:
     Infra DX Blog: /
     Archive: /archives/
+    Github: https://github.com/lystable/infra-dx-blog
 
 favicon: /favicon.png
 logo: /favicon.png

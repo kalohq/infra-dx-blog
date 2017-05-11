@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Infra DX Blog</title>
+  
+  <link href="/infra-dx-blog/atom.xml" rel="self"/>
+  
+  <link href="https://lystable.github.io/infra-dx-blog/"/>
+  <updated>2017-05-11T13:50:37.387Z</updated>
+  <id>https://lystable.github.io/infra-dx-blog/</id>
+  
+  <author>
+    <name>Infra DX Crew</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2. And so, man was given purpose</title>
+    <link href="https://lystable.github.io/infra-dx-blog/2017/05/11/2-man-was-given-purpose/"/>
+    <id>https://lystable.github.io/infra-dx-blog/2017/05/11/2-man-was-given-purpose/</id>
+    <published>2017-05-11T10:53:38.000Z</published>
+    <updated>2017-05-11T13:50:37.387Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>we’ve placed our quarterly targets! (really really far away)</li>
+<li>end-to-end failure debugging is given some love</li>
+<li>some casual platform house-keeping: wiping of the <a href="https://github.com/lystable/lystable-frontend/pull/1874" target="_blank" rel="external">email history</a> feature</li>
+<li>users need to brace themselves for our speedy app loading (in the works)</li>
+<li>a sneak peek of the Platform-as-a-Service on .ink!</li>
+</ul>
+</blockquote>
+<h2 id="On-your-mark-steady-go"><a href="#On-your-mark-steady-go" class="headerlink" title="On your mark, steady, go!"></a>On your mark, steady, go!</h2><p>As Sprint 2 (of the blog history) begins, we’ve set our quarterly targets and the race begins!</p>
+<p><img src="https://media.giphy.com/media/xxaQaFFAT1dcY/giphy.gif" alt="wow"></p>
+<p>We think we know our targets better than those guys:</p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Metric</th>
+<th style="text-align:center">Current</th>
+<th style="text-align:right">Target</th>
+<th>%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dev</td>
+<td><strong>Time-to-production</strong></td>
+<td style="text-align:center">~30 hours</td>
+<td style="text-align:right">3 hours</td>
+<td><strong>-90%</strong></td>
+</tr>
+<tr>
+<td>Dev</td>
+<td><strong>CI feedback time (frontend)</strong></td>
+<td style="text-align:center">50 minutes</td>
+<td style="text-align:right">15 minutes</td>
+<td><strong>-75%</strong></td>
+</tr>
+<tr>
+<td>Dev</td>
+<td><strong>CI feedback time (backend)</strong></td>
+<td style="text-align:center">15 minutes</td>
+<td style="text-align:right">10 minutes</td>
+<td><strong>-30%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to load applications</strong></td>
+<td style="text-align:center">5.7 seconds</td>
+<td style="text-align:right">2.3 seconds</td>
+<td><strong>-60%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to initialise hera app</strong></td>
+<td style="text-align:center">2 seconds</td>
+<td style="text-align:right">0.5 seconds</td>
+<td><strong>-75%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to load fresh projects index</strong></td>
+<td style="text-align:center">2.2 seconds</td>
+<td style="text-align:right">0.6 seconds</td>
+<td><strong>-75%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to load fresh tasks index</strong></td>
+<td style="text-align:center">2 seconds</td>
+<td style="text-align:right">0.5 seconds</td>
+<td><strong>-75%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to load fresh invoices index</strong></td>
+<td style="text-align:center">1.9 seconds</td>
+<td style="text-align:right">0.5 seconds</td>
+<td><strong>-75%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>I guess it helps to explain a couple of those.</p>
+<p><strong>Time-to-production</strong> is calculated from when a release is started (e.g. <code>dennis prepare</code> in our case) until the code is deployed and ready for customers to use. The metric we have taken is targeted at minor releases.</p>
+<p><strong>CI feedback time</strong> is the time it takes for the CI to confirm a change is good to merge. Keep in mind: the <strong>failure</strong> notification on Frontend is much better than that, since we don’t wait for CircleCI to finish the build.</p>
+<p><strong>Time to load applications</strong> is the time until we can start fetching data to load an individual page… say whaaat?! We’re shocked too, we’ve already got work you can follow below that will tackle this.</p>
+<p><strong>Time to initialise / load</strong> refers to data fetching from the API. As with everything, we’re looking to SLASH this and give our users an experience they feel frictioness in and just love coming back to.</p>
+<p>It’s most certainly a quarter full of speeding up our product in every way, indicative of how much amazing work we’ve put into it so far.</p>
+<h3 id="Will-Q3-targets-have-to-be-full-of-speedups-again"><a href="#Will-Q3-targets-have-to-be-full-of-speedups-again" class="headerlink" title="Will Q3 targets have to be full of speedups again?"></a>Will Q3 targets have to be full of speedups again?</h3><p>You’ll probably be thinking that the product is going to continue to grow, and we agree.</p>
+<p>As for the dev domain OKRs, the core principle that will underlie the solutions will be to render our builds horizontally scalable, to the degree where we’re not running into a risk of significant fluctuation in build times. This is also worth considering in line with the microservices architecture, one of the criteria of which is that we don’t have to build and test all our software every time.</p>
+<p>App loading and data fetching times will be <a href="https://internal-event-monitoring.lystable.com" target="_blank" rel="external">monitored closely</a> as we add new workflows and we’ll, at least reactively but much quicker than before, be able to know that our users are going through a bad experience. It’s been made <a href="https://github.com/lystable/lystable-frontend/pull/1787" target="_blank" rel="external">extremely easy</a> to push time metrics on new pages or different parts of the way as the page loads.</p>
+<h3 id="Quick-wins-for-front-end-builds-for-users"><a href="#Quick-wins-for-front-end-builds-for-users" class="headerlink" title="Quick wins for front-end builds (for users!)"></a>Quick wins for front-end builds (for users!)</h3><p>Following some helpful advice from webpack maintainers we took a deeper dive. Some interesting finds! We’re holding off on releasing this until we can see the impact on a more distributed bundle (ie. from code splitting).</p>
+<p>Track here: <a href="https://github.com/lystable/lystable-frontend/pull/1866" target="_blank" rel="external">https://github.com/lystable/lystable-frontend/pull/1866</a></p>
+<h3 id="E2E-JS-Errors"><a href="#E2E-JS-Errors" class="headerlink" title="E2E JS Errors"></a>E2E JS Errors</h3><p>Haven’t you been yearning for these elusive console errors? ‘Till now you had to run on local and log into the VNC session before you saw the console error. Thanks to this extra dump on the CI or at the end of your local run, that is no more :)</p>
+<p>Read more: <a href="https://github.com/lystable/lystable-frontend/pull/1773" target="_blank" rel="external">https://github.com/lystable/lystable-frontend/pull/1773</a></p>
+<p><img src="./e2ejserrors.png" alt=""></p>
+<h3 id="Introduced-prettier-to-front-end"><a href="#Introduced-prettier-to-front-end" class="headerlink" title="Introduced prettier to front-end"></a>Introduced prettier to front-end</h3><p>Allowing us to focus on writing the code and not thinking about the style.</p>
+<p>Read more here: <a href="https://github.com/lystable/lystable-frontend/pull/1683" target="_blank" rel="external">https://github.com/lystable/lystable-frontend/pull/1683</a></p>
+<p>Will be some follow up to improve the experience of partial adoption over coming sprints!</p>
+<h3 id="Are-we-rebranding-in-the-middle-of-this"><a href="#Are-we-rebranding-in-the-middle-of-this" class="headerlink" title="Are we rebranding in the middle of this?"></a>Are we rebranding in the middle of this?</h3><p>Are we? Oh yes, there’s been a bit of <a href="https://docs.google.com/document/d/1GWbkShkMMBHX0FQVOWlnBiIOs2jDLEBgBXe45nAhx6M/edit" target="_blank" rel="external">scoping</a> going on… it’s really as simple as</p>
+<p><img src="./stevable.png" alt="wow"></p>
+<p>We put aside a 5-pointer ticket to wrap this Bash command up in a script, we should remember to start it with <code>!#/bin/bash</code> or just be explicit about the interpreter we want to use when running it <code>bash &lt;script&gt;</code>. So long as we get the acceptance criteria straight on the ticket we should be fine. We reckon we’ll run this in production on the 22nd of May.</p>
+<h3 id="PaaS-Platform-as-a-Service-sneak-peek"><a href="#PaaS-Platform-as-a-Service-sneak-peek" class="headerlink" title="PaaS (Platform-as-a-Service) sneak peek"></a>PaaS (Platform-as-a-Service) sneak peek</h3><p>The Platform-as-a-Service tool that we’re setting up is motivated largely by the backend cohort’s <a href="https://trello.com/c/l5oUlCku/54-the-move-to-microservices" target="_blank" rel="external">microservices architecture movement</a>, while it has also been known as an eventuality as our platform and customer base grows.</p>
+<p>What problem is it solving? Well, to put it simply, as the number of services in production continue to grow there’s a few things that became unscalable:</p>
+<ul>
+<li>the adjusting of production capacity because a new feature</li>
+<li>the rollout of a new service</li>
+<li>the re-configuration of a service</li>
+<li>the moving of services from one failed VM to another</li>
+</ul>
+<p>The PaaS gives us a single interface, UI and API, to manage creation, configuration, scaling and deploying of services. Not only that, it means we can have any VM size we prefer, and the scaling of services will be as fast as it is to deploy Docker containers, rather than VMs. :tada: :tada: :tada:</p>
+<p>With the current production architecture the only way to scale the platform would be to hire more people, just to manage the moving around of services in production. Other options would be to give 1 service or 1 service stack per VM, and scale those individually. But that would also be 1) slow and, 2) a huge headache because we’d have to create our own conventions for creating a new service, an auto-scaling group in AWS, yada yada yada.</p>
+<p>In comes <a href="https://mesosphere.com/" target="_blank" rel="external">Mesosphere</a>!</p>
+<p>We’ve deployed it on staging with a <a href="https://lystable.atlassian.net/browse/INFRA-50" target="_blank" rel="external">really basic configuration</a> but you can see what <a href="https://internal-mesos-monitoring.lystable.ink/#/" target="_blank" rel="external">Mesos</a>, which effectively acts like a distributed operating system, and <a href="https://internal-marathon-monitoring.lystable.ink/ui/#/apps" target="_blank" rel="external">Marathon</a>, your service management interface are looking like.</p>
+<p><img src="./hw-resources.png" alt="hola"><img src="./paas.png" alt="hola"></p>
+<p>It’s still <strong>very</strong> much in the works and you can <a href="https://lystable.atlassian.net/browse/INFRA-31" target="_blank" rel="external">track it here</a>. There’ll be a :zap: talk on this stuff as we get some more parts of it out, no doubt :)</p>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><ul>
+<li>Code splitting (improving performance of loading applications for users and developers alike!)</li>
+<li>Data performance investigation (aimed at identifying the steps we need to take to reduce load times for data)</li>
+<li>Documentation strategy!</li>
+<li>Forms documented! (call to arms for review <a href="https://github.com/lystable/lystable-frontend/pull/1845" target="_blank" rel="external">https://github.com/lystable/lystable-frontend/pull/1845</a>)</li>
+<li>Writing up that rebrand.sh script</li>
+<li>Getting one of our Nameko workers to deploy through Marathon from CircleCI!</li>
+</ul>
+<h2 id="Ending-with-a-bombshell…"><a href="#Ending-with-a-bombshell…" class="headerlink" title="Ending with a bombshell…"></a>Ending with a bombshell…</h2><p><img src="./rainy-bcn.png" alt=""></p>
+<center><i><em>Not everyday is it sunny in sunny Barcelona!</em></i></center>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;This is a sprintly summary of upcoming, delivered and in-progress work for the &lt;strong&gt;Infra DX Crew&lt;/strong&gt;.&lt;br&gt;It’ll cont
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://lystable.github.io/infra-dx-blog/2017/05/10/hello-world/"/>
+    <id>https://lystable.github.io/infra-dx-blog/2017/05/10/hello-world/</id>
+    <published>2017-05-10T15:10:33.341Z</published>
+    <updated>2017-05-10T15:10:33.341Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to the Infra DX Blog!</p>
+<p>From here we’ll be writing about the work we’re undertaking, what we’re delivering and<br>what we’re doing to make infrastructure and developer experience at Lystable great.</p>
+<p>We’ll have a recurring sprint update post and perhaps some others in between.</p>
+<blockquote>
+<p>Love,<br>The Infra DX Crew</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to the Infra DX Blog!&lt;/p&gt;
+&lt;p&gt;From here we’ll be writing about the work we’re undertaking, what we’re delivering and&lt;br&gt;what we’re
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>1. In the beginning</title>
+    <link href="https://lystable.github.io/infra-dx-blog/2017/05/03/1-In-the-beginning/"/>
+    <id>https://lystable.github.io/infra-dx-blog/2017/05/03/1-In-the-beginning/</id>
+    <published>2017-05-03T19:01:48.000Z</published>
+    <updated>2017-05-11T13:50:37.387Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings and probably a few memes.</p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>We (Infra DX Crew) Blog to summarise what we’re doing (with value) and experiences</li>
+<li>Front-end builds take HALF THE BLOODY TIME reducing the turnaround time of devs</li>
+<li>We now have some awesome performance metrics to improve the user experience</li>
+<li>We’re now kicking off work to reduce those gnarly performance numbers</li>
+<li>Work on a PaaS MVP is underway to allow crews to deliver faster and more autonomously</li>
+</ul>
+</blockquote>
+<h2 id="First-post-WOW"><a href="#First-post-WOW" class="headerlink" title="First post, WOW!"></a>First post, WOW!</h2><p>This is the first post of a near infinite series. We were wondering, in the newly founded Infra DX Crew, how we could push our communication up a notch and ensure everyone can keep on top of what we’re working on and, perhaps more importantly, <em>why</em> we are working on what we are.</p>
+<p>On top of the day-to-day communication in Slack we wanted to put together a summary of our sprints where we could keep a nice archive of all our progress and experiences. We wanted this to be a little more engaging and put a personal twist on it so thought a <strong>blog</strong> would be the perfect medium for that! Writing up our experiences on a semi-regular basis should also help us consolidate our direction better.</p>
+<p>So I quickly (with a lot of face palming) threw together a blog using <a href="https://hexo.io" target="_blank" rel="external">hexo</a>, created a new Lystable theme and here we are…</p>
+<p><br></p>
+<center><strong>The Infra DX Blog!</strong></center>
+
+<p><img src="http://static.tumblr.com/f40cff9477fc5392797426019909d533/wihposx/uUUmspw88/tumblr_static_20130822184519uid2425.jpg" alt="wow"></p>
+<p><center>wow wow wow wow wow</center><br><br></p>
+<p>This sprint series (1-to-Infinity) will be central to the blog but we’ll throw a few more interesting posts in where they may be needed.</p>
+<p>Let’s go!</p>
+<h2 id="So-what-on-earth-is-Infra-DX"><a href="#So-what-on-earth-is-Infra-DX" class="headerlink" title="So, what on earth is Infra DX?"></a>So, what on earth is <em>Infra DX</em>?</h2><p>I’ll try to explain this quickly but I’m sure there will be a fuller post coming soon to go into more detail!</p>
+<p><strong>Infra = Infrastructure</strong><br><strong>DX = Developer Experience</strong></p>
+<p>On one hand we have identified a need to deliver stable and efficient infrastructure to our teams within Lystable. This could be anything from providing an easy-to-use framework for building certain parts of UI to delivering a platform which allows teams to quickly release new features <em>on their own</em>.</p>
+<p>On the other “Developer Experience” encompasses everything to do with the happiness and efficiently of developers on a day-to-day basis. Ie. Making sure engineer workflows are smooth or that designers and engineers can work together without a fuss.</p>
+<p>So as a crew it is our responsibility to push the quality of these experiences and tools. We aren’t the only ones though! All crews actively contribute towards these goals - we’re just a bit of dedicated focus.</p>
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><p>Where has our focus been?</p>
+<h4 id="Tracking-apis-and-performance-metrics"><a href="#Tracking-apis-and-performance-metrics" class="headerlink" title="Tracking apis and performance metrics"></a>Tracking apis and performance metrics</h4><p>One of our big focuses as an engineering team in Q2 is on performance around our critical flows. Before you can improve performance however you need to be able to track it. This was essentially our <em>first big project</em> together on the Infra DX Crew and I’m quite pleased with the result!</p>
+<p>On the one end we have a shiny new <a href="https://github.com/lystable/tracking" target="_blank" rel="external">generic tracking service</a> with the awesome <a href="https://www.elastic.co/blog/kibana-5-0-0-released" target="_blank" rel="external">kibana 5</a> front-end for building dashboards. On the front-end we now have some <a href="https://github.com/lystable/lystable-frontend/pull/1787" target="_blank" rel="external">benchmarking utilities</a> and a basic <a href="https://github.com/lystable/lystable-frontend/pull/1806" target="_blank" rel="external">tracking api</a> which acts as an interface to the back-end.</p>
+<p><img src="./fe-perf.png" alt="front-end performance dashboard"></p>
+<p>Above you can see one of our new dashboards for monitoring front-end performance. With these we will be able to get solid key metrics to track with the result being to deliver a faster and more responsive experience to our users!</p>
+<blockquote>
+<p>It’s now super easy to start tracking your own metrics (of <em>any</em> kind) and build a dashboard. If you want help setting something up give the crew channel a shout on slack!</p>
+</blockquote>
+<h4 id="Monitoring-portal"><a href="#Monitoring-portal" class="headerlink" title="Monitoring portal"></a>Monitoring portal</h4><p>With all these new monitoring and tracking services it was beginning to be a bit of a pain to try and remember how to find anything. You’re probably even thinking <em>“where are those shiny performance dashboards you just teased us with?!”</em>.</p>
+<p>Well, we decided to throw together a quick monitoring portal so now there’s just one thing to remember! You can find that at <a href="monitoring.lystable.com">monitoring.lystable.com</a></p>
+<p><img src="./monitoring-portal.png" alt="monitoring portal"></p>
+<blockquote>
+<p>This actually sparked a bit more of an idea in my mind that we could have a portal for <em>all</em> things. Anyway, another time…</p>
+</blockquote>
+<h4 id="Massive-CI-feedback-improvements"><a href="#Massive-CI-feedback-improvements" class="headerlink" title="Massive CI feedback improvements"></a>Massive CI feedback improvements</h4><p><em>We hit under 30mins on our full front-end builds!!</em> Is that seriously a 50% improvement?! Releases are also fully done within 10mins! This is the quickest our CI has been since summer last year! I am never going to stop over-using exclaimation marks!!</p>
+<p><br><br><img src="./under-30mins.png" alt="under 30min builds"></p>
+<p><center>Beautiful.</center><br><br></p>
+<p>An amazing effort by Yannis on this work. By parallelising our test runs, removing some build redundnacy and mastering Tetris we were able to practically halve our wild build times.</p>
+<p>This isn’t all. We improved the feedback loop by notifying sooner than Circle on individual step failures. It’s common for circle to continue running after a test failure so you don’t get any notification until <em>some time later</em>. Now we let you know in slack <em>as soon</em> as something goes wrong! SWEET.</p>
+<p><br><br><img src="./quick-notifications.png" alt="notifications"></p>
+<p><center>Always good news first.</center><br><br></p>
+<p>You can take a look at the work <a href="https://github.com/lystable/lystable-frontend/pull/1830" target="_blank" rel="external">here</a> and <a href="https://github.com/lystable/lystable-frontend/pull/1779" target="_blank" rel="external">here</a>.</p>
+<blockquote>
+<p>We definitely won’t be stopping here forever. When we pick this up in the future the new aim will be for under 15 minutes!</p>
+</blockquote>
+<h4 id="DX-Survey"><a href="#DX-Survey" class="headerlink" title="DX Survey"></a>DX Survey</h4><p>Nearly everybody completed the DX @ Lystable survey and the anonymised and shuffled responses are <a href="https://docs.google.com/spreadsheets/d/1rW13o5kpwmCa33OLiFCregqEzMEFgtI7lbD0wAgnics/edit#gid=0" target="_blank" rel="external">freely available</a>. In coming weeks we’ll be drilling down further into some of these topics as a DX focus.</p>
+<p>Thanks again to all those who added their thoughtful responses - some really great insights!</p>
+<h4 id="Crew-support"><a href="#Crew-support" class="headerlink" title="Crew support"></a>Crew support</h4><p>To help keep other crews ticking we’ve been picking up a few small product improvements or bug fixes here and there to catch some slack. So far so good and it hasn’t really affected our sprints too much!</p>
+<h2 id="Some-musings"><a href="#Some-musings" class="headerlink" title="Some musings"></a>Some musings</h2><p>A few bits we’ve been thinking about.</p>
+<h4 id="Driving-pull-requests-within-crews"><a href="#Driving-pull-requests-within-crews" class="headerlink" title="Driving pull requests within crews"></a>Driving pull requests within crews</h4><p>One of the things which has been growing as an issue is turnaround time on codereviews. There are many many angles to this but one of them is not really having the <em>right</em> people find the time to focus on them.</p>
+<p>What we’ve seen as the beginning of a trend seems to be working really well to solving this problem. That is <strong>identify fellow crew members</strong> to help push work through. This will never be an exclusive thing, especially while we need some more people in the crews and have “cohort work”, but a crew should be able to rally together to get work shipped and a big part of that is having the work reviewed! Another great positive of this is that crew members will have the most context on the actual product requirements.</p>
+<p>So a) next time you are planning your work, take into account what the crew is planning to ship in a sprint so you can make some time for reviews and b) try nudging your crew before looking beyond. It’s likely you’ll see a better response that way!</p>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><p>What’s the plan, batman?</p>
+<h4 id="PaaS-Platform-as-a-service"><a href="#PaaS-Platform-as-a-service" class="headerlink" title="PaaS: Platform as a service!"></a>PaaS: Platform as a service!</h4><p><img src="https://mesosphere.com/wp-content/themes/mesosphere/library/images/views/why-mesos/mesos-logo.png?v1" alt="mesos"></p>
+<p>Boom! As part of a drive to enable truly autonymous crews who can ship all the time we are looking to deliver a PaaS. This should allow teams to easily create and orchestrate releases of new work with a focus being on the back-end services initially.</p>
+<p>In this sprint we are planning to get a PaaS running with the nameko deployment principally flowing through that. After that (next sprint) we’ll be looking at tying in nicities such as alerting and logging to this platform. Very much MVP for now!</p>
+<p>Check out <a href="https://lystable.atlassian.net/browse/INFRA-31" target="_blank" rel="external">INFRA-31</a> to track the work (there’s an awesome MVP checklist there).</p>
+<h4 id="Improved-front-end-user-delivery"><a href="#Improved-front-end-user-delivery" class="headerlink" title="Improved front-end user delivery"></a>Improved front-end user delivery</h4><p>On the front-end to reduce the initial time it takes for users to download and start using the application we will be looking at optimising our delivered bundles.</p>
+<p><br><br><img src="https://pbs.twimg.com/media/C7JTmf1W4AEJSfI.jpg:large" alt=""></p>
+<p><center>Our current bundle looks something like this ^</center><br><br></p>
+<p>The work here will have two focuses:</p>
+<p>1) Reduce parse and initialisation time from a MASSIVE amount of javascript<br>2) Reduce download overhead of a MASSIVE amount of javascript</p>
+<p>There’s a few pieces of work to move towards this but the main gist of it is a) only deliver what the user needs for their current view (code splitting) and b) just optimise the hell out of and reduce redundnacy of all the code we ship down the wire.</p>
+<p>Check out <a href="https://lystable.atlassian.net/browse/INFRA-18" target="_blank" rel="external">INFRA-18</a> to track the work.</p>
+<h2 id="Cya"><a href="#Cya" class="headerlink" title="Cya!"></a>Cya!</h2><p>Okay time for me to wrap up this post. I’ll leave you with Yannis’ overight airport sleeping dilemma.</p>
+<p><img src="./yannis-airport.jpg" alt=""></p>
+<p><center><i>“Just not sure if its gonna work with my height”</i></center><br><br></p>
+<blockquote>
+<p>This first post was probably a bit more lengthy than future posts. There’s also a distinct lack of memes.</p>
+<p>Hope you found it useful still!<br>Chris</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;This is a sprintly summary of upcoming, delivered and in-progress work for the &lt;strong&gt;Infra DX Crew&lt;/strong&gt;.&lt;br&gt;It’ll cont
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

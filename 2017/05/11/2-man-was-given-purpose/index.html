@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 2. And so, man was given purpose · Infra DX Blog</title><meta name="description" content="2. And so, man was given purpose - Infra DX Crew"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/infra-dx-blog/favicon.png"><link rel="stylesheet" href="/infra-dx-blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://lystable.github.io/infra-dx-blog/atom.xml" title="Infra DX Blog"></head><body><div class="wrap"><header><ul class="nav nav-list"><li class="nav-list-item"><a href="/infra-dx-blog/" target="_self" class="nav-list-link">INFRA DX BLOG</a></li><li class="nav-list-item"><a href="/infra-dx-blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/lystable/infra-dx-blog" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">2. And so, man was given purpose</h1><div class="post-info">May 11, 2017</div><div class="post-content"><blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>we’ve placed our quarterly targets! (really really far away)</li>
+<li>end-to-end failure debugging is given some love</li>
+<li>some casual platform house-keeping: wiping of the <a href="https://github.com/lystable/lystable-frontend/pull/1874" target="_blank" rel="external">email history</a> feature</li>
+<li>users need to brace themselves for our speedy app loading (in the works)</li>
+<li>a sneak peek of the Platform-as-a-Service on .ink!</li>
+</ul>
+</blockquote>
+<h2 id="On-your-mark-steady-go"><a href="#On-your-mark-steady-go" class="headerlink" title="On your mark, steady, go!"></a>On your mark, steady, go!</h2><p>As Sprint 2 (of the blog history) begins, we’ve set our quarterly targets and the race begins!</p>
+<p><img src="https://media.giphy.com/media/xxaQaFFAT1dcY/giphy.gif" alt="wow"></p>
+<p>We think we know our targets better than those guys:</p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Metric</th>
+<th style="text-align:center">Current</th>
+<th style="text-align:right">Target</th>
+<th>%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dev</td>
+<td><strong>Time-to-production</strong></td>
+<td style="text-align:center">~30 hours</td>
+<td style="text-align:right">3 hours</td>
+<td><strong>-90%</strong></td>
+</tr>
+<tr>
+<td>Dev</td>
+<td><strong>CI feedback time (frontend)</strong></td>
+<td style="text-align:center">50 minutes</td>
+<td style="text-align:right">15 minutes</td>
+<td><strong>-75%</strong></td>
+</tr>
+<tr>
+<td>Dev</td>
+<td><strong>CI feedback time (backend)</strong></td>
+<td style="text-align:center">15 minutes</td>
+<td style="text-align:right">10 minutes</td>
+<td><strong>-30%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to load applications</strong></td>
+<td style="text-align:center">5.7 seconds</td>
+<td style="text-align:right">2.3 seconds</td>
+<td><strong>-60%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to initialise hera app</strong></td>
+<td style="text-align:center">2 seconds</td>
+<td style="text-align:right">0.5 seconds</td>
+<td><strong>-75%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to load fresh projects index</strong></td>
+<td style="text-align:center">2.2 seconds</td>
+<td style="text-align:right">0.6 seconds</td>
+<td><strong>-75%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to load fresh tasks index</strong></td>
+<td style="text-align:center">2 seconds</td>
+<td style="text-align:right">0.5 seconds</td>
+<td><strong>-75%</strong></td>
+</tr>
+<tr>
+<td>User</td>
+<td><strong>Time to load fresh invoices index</strong></td>
+<td style="text-align:center">1.9 seconds</td>
+<td style="text-align:right">0.5 seconds</td>
+<td><strong>-75%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>I guess it helps to explain a couple of those.</p>
+<p><strong>Time-to-production</strong> is calculated from when a release is started (e.g. <code>dennis prepare</code> in our case) until the code is deployed and ready for customers to use. The metric we have taken is targeted at minor releases.</p>
+<p><strong>CI feedback time</strong> is the time it takes for the CI to confirm a change is good to merge. Keep in mind: the <strong>failure</strong> notification on Frontend is much better than that, since we don’t wait for CircleCI to finish the build.</p>
+<p><strong>Time to load applications</strong> is the time until we can start fetching data to load an individual page… say whaaat?! We’re shocked too, we’ve already got work you can follow below that will tackle this.</p>
+<p><strong>Time to initialise / load</strong> refers to data fetching from the API. As with everything, we’re looking to SLASH this and give our users an experience they feel frictioness in and just love coming back to.</p>
+<p>It’s most certainly a quarter full of speeding up our product in every way, indicative of how much amazing work we’ve put into it so far.</p>
+<h3 id="Will-Q3-targets-have-to-be-full-of-speedups-again"><a href="#Will-Q3-targets-have-to-be-full-of-speedups-again" class="headerlink" title="Will Q3 targets have to be full of speedups again?"></a>Will Q3 targets have to be full of speedups again?</h3><p>You’ll probably be thinking that the product is going to continue to grow, and we agree.</p>
+<p>As for the dev domain OKRs, the core principle that will underlie the solutions will be to render our builds horizontally scalable, to the degree where we’re not running into a risk of significant fluctuation in build times. This is also worth considering in line with the microservices architecture, one of the criteria of which is that we don’t have to build and test all our software every time.</p>
+<p>App loading and data fetching times will be <a href="https://internal-event-monitoring.lystable.com" target="_blank" rel="external">monitored closely</a> as we add new workflows and we’ll, at least reactively but much quicker than before, be able to know that our users are going through a bad experience. It’s been made <a href="https://github.com/lystable/lystable-frontend/pull/1787" target="_blank" rel="external">extremely easy</a> to push time metrics on new pages or different parts of the way as the page loads.</p>
+<h3 id="Quick-wins-for-front-end-builds-for-users"><a href="#Quick-wins-for-front-end-builds-for-users" class="headerlink" title="Quick wins for front-end builds (for users!)"></a>Quick wins for front-end builds (for users!)</h3><p>Following some helpful advice from webpack maintainers we took a deeper dive. Some interesting finds! We’re holding off on releasing this until we can see the impact on a more distributed bundle (ie. from code splitting).</p>
+<p>Track here: <a href="https://github.com/lystable/lystable-frontend/pull/1866" target="_blank" rel="external">https://github.com/lystable/lystable-frontend/pull/1866</a></p>
+<h3 id="E2E-JS-Errors"><a href="#E2E-JS-Errors" class="headerlink" title="E2E JS Errors"></a>E2E JS Errors</h3><p>Haven’t you been yearning for these elusive console errors? ‘Till now you had to run on local and log into the VNC session before you saw the console error. Thanks to this extra dump on the CI or at the end of your local run, that is no more :)</p>
+<p>Read more: <a href="https://github.com/lystable/lystable-frontend/pull/1773" target="_blank" rel="external">https://github.com/lystable/lystable-frontend/pull/1773</a></p>
+<p><img src="./e2ejserrors.png" alt=""></p>
+<h3 id="Introduced-prettier-to-front-end"><a href="#Introduced-prettier-to-front-end" class="headerlink" title="Introduced prettier to front-end"></a>Introduced prettier to front-end</h3><p>Allowing us to focus on writing the code and not thinking about the style.</p>
+<p>Read more here: <a href="https://github.com/lystable/lystable-frontend/pull/1683" target="_blank" rel="external">https://github.com/lystable/lystable-frontend/pull/1683</a></p>
+<p>Will be some follow up to improve the experience of partial adoption over coming sprints!</p>
+<h3 id="Are-we-rebranding-in-the-middle-of-this"><a href="#Are-we-rebranding-in-the-middle-of-this" class="headerlink" title="Are we rebranding in the middle of this?"></a>Are we rebranding in the middle of this?</h3><p>Are we? Oh yes, there’s been a bit of <a href="https://docs.google.com/document/d/1GWbkShkMMBHX0FQVOWlnBiIOs2jDLEBgBXe45nAhx6M/edit" target="_blank" rel="external">scoping</a> going on… it’s really as simple as</p>
+<p><img src="./stevable.png" alt="wow"></p>
+<p>We put aside a 5-pointer ticket to wrap this Bash command up in a script, we should remember to start it with <code>!#/bin/bash</code> or just be explicit about the interpreter we want to use when running it <code>bash &lt;script&gt;</code>. So long as we get the acceptance criteria straight on the ticket we should be fine. We reckon we’ll run this in production on the 22nd of May.</p>
+<h3 id="PaaS-Platform-as-a-Service-sneak-peek"><a href="#PaaS-Platform-as-a-Service-sneak-peek" class="headerlink" title="PaaS (Platform-as-a-Service) sneak peek"></a>PaaS (Platform-as-a-Service) sneak peek</h3><p>The Platform-as-a-Service tool that we’re setting up is motivated largely by the backend cohort’s <a href="https://trello.com/c/l5oUlCku/54-the-move-to-microservices" target="_blank" rel="external">microservices architecture movement</a>, while it has also been known as an eventuality as our platform and customer base grows.</p>
+<p>What problem is it solving? Well, to put it simply, as the number of services in production continue to grow there’s a few things that became unscalable:</p>
+<ul>
+<li>the adjusting of production capacity because a new feature</li>
+<li>the rollout of a new service</li>
+<li>the re-configuration of a service</li>
+<li>the moving of services from one failed VM to another</li>
+</ul>
+<p>The PaaS gives us a single interface, UI and API, to manage creation, configuration, scaling and deploying of services. Not only that, it means we can have any VM size we prefer, and the scaling of services will be as fast as it is to deploy Docker containers, rather than VMs. :tada: :tada: :tada:</p>
+<p>With the current production architecture the only way to scale the platform would be to hire more people, just to manage the moving around of services in production. Other options would be to give 1 service or 1 service stack per VM, and scale those individually. But that would also be 1) slow and, 2) a huge headache because we’d have to create our own conventions for creating a new service, an auto-scaling group in AWS, yada yada yada.</p>
+<p>In comes <a href="https://mesosphere.com/" target="_blank" rel="external">Mesosphere</a>!</p>
+<p>We’ve deployed it on staging with a <a href="https://lystable.atlassian.net/browse/INFRA-50" target="_blank" rel="external">really basic configuration</a> but you can see what <a href="https://internal-mesos-monitoring.lystable.ink/#/" target="_blank" rel="external">Mesos</a>, which effectively acts like a distributed operating system, and <a href="https://internal-marathon-monitoring.lystable.ink/ui/#/apps" target="_blank" rel="external">Marathon</a>, your service management interface are looking like.</p>
+<p><img src="./hw-resources.png" alt="hola"><img src="./paas.png" alt="hola"></p>
+<p>It’s still <strong>very</strong> much in the works and you can <a href="https://lystable.atlassian.net/browse/INFRA-31" target="_blank" rel="external">track it here</a>. There’ll be a :zap: talk on this stuff as we get some more parts of it out, no doubt :)</p>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><ul>
+<li>Code splitting (improving performance of loading applications for users and developers alike!)</li>
+<li>Data performance investigation (aimed at identifying the steps we need to take to reduce load times for data)</li>
+<li>Documentation strategy!</li>
+<li>Forms documented! (call to arms for review <a href="https://github.com/lystable/lystable-frontend/pull/1845" target="_blank" rel="external">https://github.com/lystable/lystable-frontend/pull/1845</a>)</li>
+<li>Writing up that rebrand.sh script</li>
+<li>Getting one of our Nameko workers to deploy through Marathon from CircleCI!</li>
+</ul>
+<h2 id="Ending-with-a-bombshell…"><a href="#Ending-with-a-bombshell…" class="headerlink" title="Ending with a bombshell…"></a>Ending with a bombshell…</h2><p><img src="./rainy-bcn.png" alt=""></p>
+<center><i><em>Not everyday is it sunny in sunny Barcelona!</em></i></center>
+</div></article></div></main><footer><div class="copyright"><p>© 2015 - 2017 <a href="https://lystable.github.io/infra-dx-blog">Infra DX Crew</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and a <a href="https://github.com/lystable/infra-dx-blog" target="_blank">heavily modified</a> <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

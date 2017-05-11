@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 1. In the beginning · Infra DX Blog</title><meta name="description" content="1. In the beginning - Infra DX Crew"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/infra-dx-blog/favicon.png"><link rel="stylesheet" href="/infra-dx-blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://lystable.github.io/infra-dx-blog/atom.xml" title="Infra DX Blog"></head><body><div class="wrap"><header><ul class="nav nav-list"><li class="nav-list-item"><a href="/infra-dx-blog/" target="_self" class="nav-list-link">INFRA DX BLOG</a></li><li class="nav-list-item"><a href="/infra-dx-blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/lystable/infra-dx-blog" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">1. In the beginning</h1><div class="post-info">May 3, 2017</div><div class="post-content"><blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings and probably a few memes.</p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>We (Infra DX Crew) Blog to summarise what we’re doing (with value) and experiences</li>
+<li>Front-end builds take HALF THE BLOODY TIME reducing the turnaround time of devs</li>
+<li>We now have some awesome performance metrics to improve the user experience</li>
+<li>We’re now kicking off work to reduce those gnarly performance numbers</li>
+<li>Work on a PaaS MVP is underway to allow crews to deliver faster and more autonomously</li>
+</ul>
+</blockquote>
+<h2 id="First-post-WOW"><a href="#First-post-WOW" class="headerlink" title="First post, WOW!"></a>First post, WOW!</h2><p>This is the first post of a near infinite series. We were wondering, in the newly founded Infra DX Crew, how we could push our communication up a notch and ensure everyone can keep on top of what we’re working on and, perhaps more importantly, <em>why</em> we are working on what we are.</p>
+<p>On top of the day-to-day communication in Slack we wanted to put together a summary of our sprints where we could keep a nice archive of all our progress and experiences. We wanted this to be a little more engaging and put a personal twist on it so thought a <strong>blog</strong> would be the perfect medium for that! Writing up our experiences on a semi-regular basis should also help us consolidate our direction better.</p>
+<p>So I quickly (with a lot of face palming) threw together a blog using <a href="https://hexo.io" target="_blank" rel="external">hexo</a>, created a new Lystable theme and here we are…</p>
+<p><br></p>
+<center><strong>The Infra DX Blog!</strong></center>
+
+<p><img src="http://static.tumblr.com/f40cff9477fc5392797426019909d533/wihposx/uUUmspw88/tumblr_static_20130822184519uid2425.jpg" alt="wow"></p>
+<p><center>wow wow wow wow wow</center><br><br></p>
+<p>This sprint series (1-to-Infinity) will be central to the blog but we’ll throw a few more interesting posts in where they may be needed.</p>
+<p>Let’s go!</p>
+<h2 id="So-what-on-earth-is-Infra-DX"><a href="#So-what-on-earth-is-Infra-DX" class="headerlink" title="So, what on earth is Infra DX?"></a>So, what on earth is <em>Infra DX</em>?</h2><p>I’ll try to explain this quickly but I’m sure there will be a fuller post coming soon to go into more detail!</p>
+<p><strong>Infra = Infrastructure</strong><br><strong>DX = Developer Experience</strong></p>
+<p>On one hand we have identified a need to deliver stable and efficient infrastructure to our teams within Lystable. This could be anything from providing an easy-to-use framework for building certain parts of UI to delivering a platform which allows teams to quickly release new features <em>on their own</em>.</p>
+<p>On the other “Developer Experience” encompasses everything to do with the happiness and efficiently of developers on a day-to-day basis. Ie. Making sure engineer workflows are smooth or that designers and engineers can work together without a fuss.</p>
+<p>So as a crew it is our responsibility to push the quality of these experiences and tools. We aren’t the only ones though! All crews actively contribute towards these goals - we’re just a bit of dedicated focus.</p>
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><p>Where has our focus been?</p>
+<h4 id="Tracking-apis-and-performance-metrics"><a href="#Tracking-apis-and-performance-metrics" class="headerlink" title="Tracking apis and performance metrics"></a>Tracking apis and performance metrics</h4><p>One of our big focuses as an engineering team in Q2 is on performance around our critical flows. Before you can improve performance however you need to be able to track it. This was essentially our <em>first big project</em> together on the Infra DX Crew and I’m quite pleased with the result!</p>
+<p>On the one end we have a shiny new <a href="https://github.com/lystable/tracking" target="_blank" rel="external">generic tracking service</a> with the awesome <a href="https://www.elastic.co/blog/kibana-5-0-0-released" target="_blank" rel="external">kibana 5</a> front-end for building dashboards. On the front-end we now have some <a href="https://github.com/lystable/lystable-frontend/pull/1787" target="_blank" rel="external">benchmarking utilities</a> and a basic <a href="https://github.com/lystable/lystable-frontend/pull/1806" target="_blank" rel="external">tracking api</a> which acts as an interface to the back-end.</p>
+<p><img src="./fe-perf.png" alt="front-end performance dashboard"></p>
+<p>Above you can see one of our new dashboards for monitoring front-end performance. With these we will be able to get solid key metrics to track with the result being to deliver a faster and more responsive experience to our users!</p>
+<blockquote>
+<p>It’s now super easy to start tracking your own metrics (of <em>any</em> kind) and build a dashboard. If you want help setting something up give the crew channel a shout on slack!</p>
+</blockquote>
+<h4 id="Monitoring-portal"><a href="#Monitoring-portal" class="headerlink" title="Monitoring portal"></a>Monitoring portal</h4><p>With all these new monitoring and tracking services it was beginning to be a bit of a pain to try and remember how to find anything. You’re probably even thinking <em>“where are those shiny performance dashboards you just teased us with?!”</em>.</p>
+<p>Well, we decided to throw together a quick monitoring portal so now there’s just one thing to remember! You can find that at <a href="monitoring.lystable.com">monitoring.lystable.com</a></p>
+<p><img src="./monitoring-portal.png" alt="monitoring portal"></p>
+<blockquote>
+<p>This actually sparked a bit more of an idea in my mind that we could have a portal for <em>all</em> things. Anyway, another time…</p>
+</blockquote>
+<h4 id="Massive-CI-feedback-improvements"><a href="#Massive-CI-feedback-improvements" class="headerlink" title="Massive CI feedback improvements"></a>Massive CI feedback improvements</h4><p><em>We hit under 30mins on our full front-end builds!!</em> Is that seriously a 50% improvement?! Releases are also fully done within 10mins! This is the quickest our CI has been since summer last year! I am never going to stop over-using exclaimation marks!!</p>
+<p><br><br><img src="./under-30mins.png" alt="under 30min builds"></p>
+<p><center>Beautiful.</center><br><br></p>
+<p>An amazing effort by Yannis on this work. By parallelising our test runs, removing some build redundnacy and mastering Tetris we were able to practically halve our wild build times.</p>
+<p>This isn’t all. We improved the feedback loop by notifying sooner than Circle on individual step failures. It’s common for circle to continue running after a test failure so you don’t get any notification until <em>some time later</em>. Now we let you know in slack <em>as soon</em> as something goes wrong! SWEET.</p>
+<p><br><br><img src="./quick-notifications.png" alt="notifications"></p>
+<p><center>Always good news first.</center><br><br></p>
+<p>You can take a look at the work <a href="https://github.com/lystable/lystable-frontend/pull/1830" target="_blank" rel="external">here</a> and <a href="https://github.com/lystable/lystable-frontend/pull/1779" target="_blank" rel="external">here</a>.</p>
+<blockquote>
+<p>We definitely won’t be stopping here forever. When we pick this up in the future the new aim will be for under 15 minutes!</p>
+</blockquote>
+<h4 id="DX-Survey"><a href="#DX-Survey" class="headerlink" title="DX Survey"></a>DX Survey</h4><p>Nearly everybody completed the DX @ Lystable survey and the anonymised and shuffled responses are <a href="https://docs.google.com/spreadsheets/d/1rW13o5kpwmCa33OLiFCregqEzMEFgtI7lbD0wAgnics/edit#gid=0" target="_blank" rel="external">freely available</a>. In coming weeks we’ll be drilling down further into some of these topics as a DX focus.</p>
+<p>Thanks again to all those who added their thoughtful responses - some really great insights!</p>
+<h4 id="Crew-support"><a href="#Crew-support" class="headerlink" title="Crew support"></a>Crew support</h4><p>To help keep other crews ticking we’ve been picking up a few small product improvements or bug fixes here and there to catch some slack. So far so good and it hasn’t really affected our sprints too much!</p>
+<h2 id="Some-musings"><a href="#Some-musings" class="headerlink" title="Some musings"></a>Some musings</h2><p>A few bits we’ve been thinking about.</p>
+<h4 id="Driving-pull-requests-within-crews"><a href="#Driving-pull-requests-within-crews" class="headerlink" title="Driving pull requests within crews"></a>Driving pull requests within crews</h4><p>One of the things which has been growing as an issue is turnaround time on codereviews. There are many many angles to this but one of them is not really having the <em>right</em> people find the time to focus on them.</p>
+<p>What we’ve seen as the beginning of a trend seems to be working really well to solving this problem. That is <strong>identify fellow crew members</strong> to help push work through. This will never be an exclusive thing, especially while we need some more people in the crews and have “cohort work”, but a crew should be able to rally together to get work shipped and a big part of that is having the work reviewed! Another great positive of this is that crew members will have the most context on the actual product requirements.</p>
+<p>So a) next time you are planning your work, take into account what the crew is planning to ship in a sprint so you can make some time for reviews and b) try nudging your crew before looking beyond. It’s likely you’ll see a better response that way!</p>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><p>What’s the plan, batman?</p>
+<h4 id="PaaS-Platform-as-a-service"><a href="#PaaS-Platform-as-a-service" class="headerlink" title="PaaS: Platform as a service!"></a>PaaS: Platform as a service!</h4><p><img src="https://mesosphere.com/wp-content/themes/mesosphere/library/images/views/why-mesos/mesos-logo.png?v1" alt="mesos"></p>
+<p>Boom! As part of a drive to enable truly autonymous crews who can ship all the time we are looking to deliver a PaaS. This should allow teams to easily create and orchestrate releases of new work with a focus being on the back-end services initially.</p>
+<p>In this sprint we are planning to get a PaaS running with the nameko deployment principally flowing through that. After that (next sprint) we’ll be looking at tying in nicities such as alerting and logging to this platform. Very much MVP for now!</p>
+<p>Check out <a href="https://lystable.atlassian.net/browse/INFRA-31" target="_blank" rel="external">INFRA-31</a> to track the work (there’s an awesome MVP checklist there).</p>
+<h4 id="Improved-front-end-user-delivery"><a href="#Improved-front-end-user-delivery" class="headerlink" title="Improved front-end user delivery"></a>Improved front-end user delivery</h4><p>On the front-end to reduce the initial time it takes for users to download and start using the application we will be looking at optimising our delivered bundles.</p>
+<p><br><br><img src="https://pbs.twimg.com/media/C7JTmf1W4AEJSfI.jpg:large" alt=""></p>
+<p><center>Our current bundle looks something like this ^</center><br><br></p>
+<p>The work here will have two focuses:</p>
+<p>1) Reduce parse and initialisation time from a MASSIVE amount of javascript<br>2) Reduce download overhead of a MASSIVE amount of javascript</p>
+<p>There’s a few pieces of work to move towards this but the main gist of it is a) only deliver what the user needs for their current view (code splitting) and b) just optimise the hell out of and reduce redundnacy of all the code we ship down the wire.</p>
+<p>Check out <a href="https://lystable.atlassian.net/browse/INFRA-18" target="_blank" rel="external">INFRA-18</a> to track the work.</p>
+<h2 id="Cya"><a href="#Cya" class="headerlink" title="Cya!"></a>Cya!</h2><p>Okay time for me to wrap up this post. I’ll leave you with Yannis’ overight airport sleeping dilemma.</p>
+<p><img src="./yannis-airport.jpg" alt=""></p>
+<p><center><i>“Just not sure if its gonna work with my height”</i></center><br><br></p>
+<blockquote>
+<p>This first post was probably a bit more lengthy than future posts. There’s also a distinct lack of memes.</p>
+<p>Hope you found it useful still!<br>Chris</p>
+</blockquote>
+</div></article></div></main><footer><div class="copyright"><p>© 2015 - 2017 <a href="https://lystable.github.io/infra-dx-blog">Infra DX Crew</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and a <a href="https://github.com/lystable/infra-dx-blog" target="_blank">heavily modified</a> <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

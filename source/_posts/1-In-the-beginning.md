@@ -5,14 +5,14 @@ date: 2017-05-03 21:01:48
 
 > This is a sprintly summary of upcoming, delivered and in-progress work for the **Infra DX Crew**.
 > It'll contain technical musings and probably a few memes.
-> 
+>
 > #### TLDR
-> 
+>
 > - We (Infra DX Crew) Blog to summarise what we're doing (with value) and experiences
 > - Front-end builds take HALF THE BLOODY TIME reducing the turnaround time of devs
 > - We now have some awesome performance metrics to improve the user experience
 > - We're now kicking off work to reduce those gnarly performance numbers
-> - Work on a PaaS MVP is underway to allow crews to deliver faster and more autonomously 
+> - Work on a PaaS MVP is underway to allow crews to deliver faster and more autonomously
 
 ## First post, WOW!
 
@@ -35,7 +35,7 @@ Let's go!
 
 ## So, what on earth is *Infra DX*?
 
-I'll try to explain this quickly but I'm sure there will be a fuller post coming soon to go into more detail! 
+I'll try to explain this quickly but I'm sure there will be a fuller post coming soon to go into more detail!
 
 **Infra = Infrastructure**
 **DX = Developer Experience**

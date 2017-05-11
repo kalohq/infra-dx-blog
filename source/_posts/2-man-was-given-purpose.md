@@ -23,15 +23,15 @@ As Sprint 2 (of the blog history) begins, we've set our quarterly targets and th
 We think we know our targets better than those guys:
 
 | Domain | Metric        | Current           | Target  | %
-| ---- | ------------- |:-------------:| -----:|
-| Dev | **Time-to-production** | ~30 hours | 3 hours | **-90%**
-| Dev | **CI feedback time (frontend)** | 50 minutes | 15 minutes | **-75%**
-| Dev | **CI feedback time (backend)** | 15 minutes | 10 minutes | **-30%**
-| User | **Time to load applications** | 5.7 seconds | 2.3 seconds | **-75%**
-| User | **Time to initialise hera app** | 2 seconds | 0.5 seconds | **-75%**
-| User | **Time to load fresh projects index** | 2.2 seconds | 0.6 seconds | **-75%**
-| User | **Time to load fresh tasks index** | 2 seconds | 0.5 seconds | **-75%**
-| User | **Time to load fresh invoices index** | 1.9 seconds | 0.5 seconds | **-75%**
+| ---- | ------------- |:-------------:| -----:|----|
+| Dev | **Time-to-production** | ~30 hours | 3 hours | **-90%** |
+| Dev | **CI feedback time (frontend)** | 50 minutes | 15 minutes | **-75%** |
+| Dev | **CI feedback time (backend)** | 15 minutes | 10 minutes | **-30%** |
+| User | **Time to load applications** | 5.7 seconds | 2.3 seconds | **-60%** |
+| User | **Time to initialise hera app** | 2 seconds | 0.5 seconds | **-75%** |
+| User | **Time to load fresh projects index** | 2.2 seconds | 0.6 seconds | **-75%** |
+| User | **Time to load fresh tasks index** | 2 seconds | 0.5 seconds | **-75%** |
+| User | **Time to load fresh invoices index** | 1.9 seconds | 0.5 seconds | **-75%** |
 
 I guess it helps to explain a couple of those.
 
@@ -45,15 +45,13 @@ I guess it helps to explain a couple of those.
 
 It's most certainly a quarter full of speeding up our product in every way, indicative of how much amazing work we've put into it so far.
 
-### Will Q4 targets have to be full of speedups again?
+### Will Q3 targets have to be full of speedups again?
 
 You'll probably be thinking that the product is going to continue to grow, and we agree.
 
-As for the dev domain OKRs, the core principle that will underlie the solutions will be to render our builds horizontally scalable, to the degree where we're not running into a risk of significant fluctuation in build times. This is also worth considering in line with the microservices architecture, which has one of the basic aims that we won't have to build and test all our software every time.
+As for the dev domain OKRs, the core principle that will underlie the solutions will be to render our builds horizontally scalable, to the degree where we're not running into a risk of significant fluctuation in build times. This is also worth considering in line with the microservices architecture, one of the criteria of which is that we don't have to build and test all our software every time.
 
 App loading and data fetching times will be [monitored closely](https://internal-event-monitoring.lystable.com) as we add new workflows and we'll, at least reactively but much quicker than before, be able to know that our users are going through a bad experience. It's been made [extremely easy](https://github.com/lystable/lystable-frontend/pull/1787) to push time metrics on new pages or different parts of the way as the page loads.
-
-## What we worked on
 
 ### Quick wins for front-end builds (for users!)
 
@@ -67,7 +65,7 @@ Haven't you been yearning for these elusive console errors? 'Till now you had to
 
 Read more: https://github.com/lystable/lystable-frontend/pull/1773
 
-![](./2-man-was-given-purpose/e2ejserrors.png)
+![](./e2ejserrors.png)
 
 ### Introduced prettier to front-end
 
@@ -81,7 +79,7 @@ Will be some follow up to improve the experience of partial adoption over coming
 
 Are we? Oh yes, there's been a bit of [scoping](https://docs.google.com/document/d/1GWbkShkMMBHX0FQVOWlnBiIOs2jDLEBgBXe45nAhx6M/edit) going on... it's really as simple as
 
-![wow](./2-man-was-given-purpose/stevable.png)
+![wow](./stevable.png)
 
 We put aside a 5-pointer ticket to wrap this Bash command up in a script, we should remember to start it with `!#/bin/bash` or just be explicit about the interpreter we want to use when running it `bash <script>`. So long as we get the acceptance criteria straight on the ticket we should be fine. We reckon we'll run this in production on the 22nd of May.
 
@@ -104,7 +102,7 @@ In comes [Mesosphere](https://mesosphere.com/)!
 
 We've deployed it on staging with a [really basic configuration](https://lystable.atlassian.net/browse/INFRA-50) but you can see what [Mesos](https://internal-mesos-monitoring.lystable.ink/#/), which effectively acts like a distributed operating system, and [Marathon](https://internal-marathon-monitoring.lystable.ink/ui/#/apps), your service management interface are looking like.
 
-![hola](./2-man-was-given-purpose/hw-resources.png)![hola](./2-man-was-given-purpose/paas.png)
+![hola](./hw-resources.png)![hola](./paas.png)
 
 It's still **very** much in the works and you can [track it here](https://lystable.atlassian.net/browse/INFRA-31). There'll be a :zap: talk on this stuff as we get some more parts of it out, no doubt :)
 
@@ -119,5 +117,5 @@ It's still **very** much in the works and you can [track it here](https://lystab
 
 ## Ending with a bombshell...
 
-![](./2-man-was-given-purpose/rainy-bcn.png)
+![](./rainy-bcn.png)
 <center><i>*Not everyday is it sunny in sunny Barcelona!*</i></center>

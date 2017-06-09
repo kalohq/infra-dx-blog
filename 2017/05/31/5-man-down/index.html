@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 5. Man down · Infra DX Blog</title><meta name="description" content="5. Man down - Infra DX Crew"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/infra-dx-blog/favicon.png"><link rel="stylesheet" href="/infra-dx-blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://kalohq.github.io/infra-dx-blog/atom.xml" title="Infra DX Blog"></head><body><div class="wrap"><header><ul class="nav nav-list"><li class="nav-list-item"><a href="/infra-dx-blog/" target="_self" class="nav-list-link">INFRA DX BLOG</a></li><li class="nav-list-item"><a href="/infra-dx-blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/lystable/infra-dx-blog" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">5. Man down</h1><div class="post-info">May 31, 2017</div><div class="post-content"><blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>Kicked off lots of things: data loading, pagination UX, and performance.</li>
+<li>Code splitting (mostly) there 🎉</li>
+<li>Refined <a href="https://gist.github.com/chrisui/9d474b9a23e9ab9cbfc21445f98c2785" target="_blank" rel="external">frontend cohort process</a></li>
+<li>Category update improvements</li>
+<li>A (slightly) new landing page</li>
+</ul>
+</blockquote>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>After a pretty intense rebrand focused sprint, things are <em>mostly</em> back to normal. Although for the past and upcoming sprints, the crew has mostly been one man down:</p>
+<ul>
+<li>Yannis was away for most of the previous sprint</li>
+<li>Chris is away for most of the upcoming sprint</li>
+</ul>
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><p>Where has our focus been?</p>
+<h4 id="Data-loading-UX"><a href="#Data-loading-UX" class="headerlink" title="Data loading UX"></a>Data loading UX</h4><p>Chris kicked off discussions with the product team around data loading and the best UX practices surrounding this.</p>
+<p>He’s also done some cool work on building out some skeleton components, that can be used to reduce the perceived load time that a user experiences.</p>
+<p><img src="./skeleton-kit.png" alt="Skeleton Loading Kit"></p>
+<h4 id="Code-splitting"><a href="#Code-splitting" class="headerlink" title="Code splitting"></a>Code splitting</h4><p>Chris has powered on with the performance theme, looking at how our frontend bundles can be split up to only load code when it’s required.</p>
+<h4 id="Refined-f-e-cohort-process"><a href="#Refined-f-e-cohort-process" class="headerlink" title="Refined f/e cohort process"></a>Refined f/e cohort process</h4><p>As part of the ongoing push to document all the things, Chris has put together some documentation on the processes of the Frontend Cohort, which you can check out <strong><a href="https://gist.github.com/chrisui/9d474b9a23e9ab9cbfc21445f98c2785" target="_blank" rel="external">here</a>!</strong></p>
+<h4 id="New-landing-page-header"><a href="#New-landing-page-header" class="headerlink" title="New landing page header"></a>New landing page header</h4><p>We’ve shipped the new header of our landing page, designed by Pete and featuring one of our customers.</p>
+<p><img src="./eros-header.jpg" alt="Eros Header"></p>
+<h4 id="Slow-category-updates"><a href="#Slow-category-updates" class="headerlink" title="Slow category updates"></a>Slow category updates</h4><p>Slow category update improvements have been reviewed and are ready, but we’ll be preceding them with a couple days of monitoring to get a fact-based measurement for how much better we’ve made it for the user, as well as to be better aware of Elasticsearch indexing issues in the future.</p>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><h4 id="Marketing-site-updates"><a href="#Marketing-site-updates" class="headerlink" title="Marketing site updates"></a>Marketing site updates</h4><p>I (Alex) will continue on migrating pages from the old marketing site in to our shiny new repo. We’re about 75% of the way to having one repo, and on track to migrate everything by the end of the quarter.</p>
+<h4 id="PasS-Platform-as-a-Service"><a href="#PasS-Platform-as-a-Service" class="headerlink" title="PasS (Platform as a Service)"></a>PasS (Platform as a Service)</h4><p>Yannis will start working on getting the Nameko workers deploying in the new way, and this infra should be deployed on staging, without the changes yet being reflected in the LWS repo, so we can ensure stability. Check out <a href="https://lystable.atlassian.net/browse/INFRA-63" target="_blank" rel="external">this ticket</a> for more context.</p>
+<p>Also PaaS related, Yannis has started on integrating it with Consul to achieve service discovery, which will result in DNS-based service discovery and alerting as a result, out of the box 🎁.</p>
+<h4 id="Category-update-improvements"><a href="#Category-update-improvements" class="headerlink" title="Category update improvements"></a>Category update improvements</h4><p>Yannis will be releasing the updates to address the slow category updates (see above) this sprint.</p>
+<h2 id="Release-Watch"><a href="#Release-Watch" class="headerlink" title="Release Watch"></a>Release Watch</h2><blockquote>
+<p>This is a recurring section retrospecting any releases which didn’t seem to go as smoothly as we would’ve liked.</p>
+</blockquote>
+<h4 id="Backend"><a href="#Backend" class="headerlink" title="Backend"></a>Backend</h4><ul>
+<li>Total number of releases: 4</li>
+<li>Average release time: 120 minutes</li>
+<li>Maximum release time: 180 minutes</li>
+</ul>
+<h4 id="Frontend"><a href="#Frontend" class="headerlink" title="Frontend"></a>Frontend</h4><ul>
+<li>Total number of releases: 1</li>
+<li>Average release time: 180 minutes</li>
+<li>Maximum release time: 180 minutes</li>
+</ul>
+<blockquote>
+<p>See ya!<br>✌️ AP</p>
+</blockquote>
+</div></article></div></main><footer><div class="copyright"><p>© 2015 - 2017 <a href="https://kalohq.github.io/infra-dx-blog">Infra DX Crew</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and a <a href="https://github.com/lystable/infra-dx-blog" target="_blank">heavily modified</a> <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

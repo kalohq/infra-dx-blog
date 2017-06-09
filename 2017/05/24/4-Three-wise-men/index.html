@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 4. Three wise men · Infra DX Blog</title><meta name="description" content="4. Three wise men - Infra DX Crew"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/infra-dx-blog/favicon.png"><link rel="stylesheet" href="/infra-dx-blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://kalohq.github.io/infra-dx-blog/atom.xml" title="Infra DX Blog"></head><body><div class="wrap"><header><ul class="nav nav-list"><li class="nav-list-item"><a href="/infra-dx-blog/" target="_self" class="nav-list-link">INFRA DX BLOG</a></li><li class="nav-list-item"><a href="/infra-dx-blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/lystable/infra-dx-blog" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">4. Three wise men</h1><div class="post-info">May 24, 2017</div><div class="post-content"><blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>We have a new crew member! Welcome <strong>Alex Pate</strong>!</li>
+<li>We’re taking a week off! (Not quite so bluntly but we do have a few holidays over this sprint and the next)</li>
+<li>We rebranded! Huge effort from Yannis and AP on planning and executing the engineering side.</li>
+<li>There’s an awesome new “Skeleton UI Kit” coming</li>
+<li>Work is ticking along nicely on the performance focus<ul>
+<li>Core bundles are at &gt;30% reduction</li>
+<li>Done an initial investigation into data loading (work being scoped)</li>
+<li>Kicking off scoping of work around ux patterns</li>
+</ul>
+</li>
+<li>Not too much in <strong>Release Watch</strong> this week. Most releases take an hour from prep to deploy.</li>
+</ul>
+</blockquote>
+<h2 id="“What-even-is-Myrrh-”"><a href="#“What-even-is-Myrrh-”" class="headerlink" title="“What even is Myrrh?”"></a><em>“What even is Myrrh?”</em></h2><p>We have added a seriously wise man to the crew in AP. With our focus being on ensuring engineers have what they need to deliver a good platform while also keeping that platform working as smooth as possible we saw a definite alignment with Alex’s goals. Alex focus is, with a design mindset, to bring stability and consistency to how we engineer UI’s at Lystable. At least that’s what it is until he tells me that’s wrong after he reads this. Anyhow!</p>
+<p>Get on with it, Chris.</p>
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><p>Where has our focus been?</p>
+<h4 id="Smoothest-Rebrand-EVER"><a href="#Smoothest-Rebrand-EVER" class="headerlink" title="Smoothest Rebrand EVER"></a>Smoothest Rebrand EVER</h4><p>Thanks to some awesome planning and work by Yannis, AP and the rest of the rebrand team this execution on Monday went off and was completed within under 2 hours.</p>
+<p><br><br><img src="https://media.giphy.com/media/AP94i0chEPXSU/giphy.gif" alt="smooooth"></p>
+<p><center>Smoother than P Diddy</center><br><br></p>
+<p>It’s worth noting that there is still lots of internal infra that will be renamed over coming weeks so keep your eye out for “Lystable”, whatever <em>that</em> is.</p>
+<h4 id="Performance-investigation"><a href="#Performance-investigation" class="headerlink" title="Performance investigation"></a>Performance investigation</h4><p>We’ve spent some time investigating the loading performance of certain areas of our application and by breaking down events into a high level timeline we’ve been able to target some improvements to make.</p>
+<p>See the initial glimpse <a href="https://github.com/kalohq/frontend/blob/10015a8ca2d3a43ca5a40fb6b60ff4fc18a16377/docs/research/170516-data-fetching-performance.md" target="_blank" rel="external">here</a></p>
+<p>Here’s an example timeline we came up with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">-----&gt; | Fetch unrelated queries for hidden ui</div><div class="line">-----&gt; | Fetch projects list</div><div class="line">       | ---&gt; | void (cpu churn?)</div><div class="line">              | -----&gt; | Fetch related freelancers</div><div class="line">              | -----&gt; | Fetch related users</div><div class="line">                | ---&gt; | void (cpu churn?)</div><div class="line">                       | -----&gt; | Fetch freelancer &amp; user image files</div><div class="line">                       | -----&gt; | Fetch freelancer skills (unused)</div><div class="line">                       | -----&gt; | Fetch freelancer profiles (unused)</div><div class="line">                                | ---&gt; | void (cpu churn?) before rendering results</div></pre></td></tr></table></figure>
+<p>We’ll be taking this and discussing across cohorts what actions we can take to fix the issues here. We’ll aim to scope up this work so we can prioritise it this quarter.</p>
+<h4 id="Skeleton-layouts"><a href="#Skeleton-layouts" class="headerlink" title="Skeleton layouts"></a>Skeleton layouts</h4><p>In an effort to make loading of pages less janky we are introducing a design paradigm called “skeleton loading”. This shows rough outlines of the anticipated content layout while it is loading. We can show this while loading assets, data or anything!</p>
+<p>You can follow the PR for this ui kit <a href="https://github.com/kalohq/ui/pull/7" target="_blank" rel="external">here</a>.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1042432/26374037/c222cfa4-3ffb-11e7-9589-65a686083db9.png" alt="skeleton ui"></p>
+<h2 id="Release-Watch"><a href="#Release-Watch" class="headerlink" title="Release Watch"></a>Release Watch</h2><p>Going to ignore the hotfixes for the rebrand here since they are very special cases. (v0.199.1 f/e, v0.214.1 b/e)</p>
+<h4 id="Frontend"><a href="#Frontend" class="headerlink" title="Frontend"></a>Frontend</h4><ul>
+<li>1 minor release (70 mins)</li>
+<li>2 hotfix releases (1 hour and 5.5 hours)</li>
+</ul>
+<h4 id="Backend"><a href="#Backend" class="headerlink" title="Backend"></a>Backend</h4><ul>
+<li>1 minor release (72 mins)</li>
+</ul>
+<h4 id="Takeaways"><a href="#Takeaways" class="headerlink" title="Takeaways"></a>Takeaways</h4><ul>
+<li>We’re generally sitting around an hour for releases which which is pretty good but we hope to improve!</li>
+<li>Should investigate why a hotfix was sitting around for nearly 6 hours</li>
+</ul>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><p>What’s the plan, batman?</p>
+<h5 id="Holiday-Season"><a href="#Holiday-Season" class="headerlink" title="Holiday Season"></a>Holiday Season</h5><p>Yannis is only here one day next week (in the sprint) where he’ll be mostly tidying up final rebrand infra bits and doing a bit of work on slow category updates.</p>
+<p>I (Chris) am only here Thursday/Friday and I’m focusing on getting the code splitting work into a “ready to merge and release” state while scoping a ton of work for next month across design, frontend and backend (all focused around performance).</p>
+<h5 id="Continued-marketing-migration"><a href="#Continued-marketing-migration" class="headerlink" title="Continued marketing migration"></a>Continued marketing migration</h5><p>AP is continuing to migrate old marketing pages into the new site.</p>
+<p>You can see all the planned work for this sprint on our <a href="https://lystable.atlassian.net/secure/RapidBoard.jspa?rapidView=13" target="_blank" rel="external">jira board</a>!</p>
+<blockquote>
+<p>Thanks for reading!<br>Chris</p>
+</blockquote>
+</div></article></div></main><footer><div class="copyright"><p>© 2015 - 2017 <a href="https://kalohq.github.io/infra-dx-blog">Infra DX Crew</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and a <a href="https://github.com/lystable/infra-dx-blog" target="_blank">heavily modified</a> <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

@@ -4,9 +4,9 @@
   
   <link href="/infra-dx-blog/atom.xml" rel="self"/>
   
-  <link href="https://lystable.github.io/infra-dx-blog/"/>
-  <updated>2017-05-11T13:50:37.387Z</updated>
-  <id>https://lystable.github.io/infra-dx-blog/</id>
+  <link href="https://kalohq.github.io/infra-dx-blog/"/>
+  <updated>2017-06-09T23:30:50.487Z</updated>
+  <id>https://kalohq.github.io/infra-dx-blog/</id>
   
   <author>
     <name>Infra DX Crew</name>
@@ -16,11 +16,370 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>6. See prophecy attached</title>
+    <link href="https://kalohq.github.io/infra-dx-blog/2017/06/09/6-See-prophecy-attached/"/>
+    <id>https://kalohq.github.io/infra-dx-blog/2017/06/09/6-See-prophecy-attached/</id>
+    <published>2017-06-09T15:54:36.000Z</published>
+    <updated>2017-06-09T23:30:50.487Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><p>The scoping prophets have laid pen on scroll…</p>
+<ul>
+<li>Marketing site to be getting another make over!</li>
+<li>How will we give users a faster (=== better!) experience</li>
+<li>A more fitting development process</li>
+</ul>
+<p>And as for already ongoing things…</p>
+<ul>
+<li>Second marketing site finally deprecated!!</li>
+<li>PaaS progress update</li>
+</ul>
+</blockquote>
+<h2 id="prophecy-pdf"><a href="#prophecy-pdf" class="headerlink" title="prophecy.pdf"></a>prophecy.pdf</h2><p><img src="./prophecypdf-l.png" alt=""></p>
+<center><i><em>From left to right: the Infra-Dx interpretation and the original transcript itself.</em></i></center>
+
+
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><h4 id="Marketing-site-now-singular"><a href="#Marketing-site-now-singular" class="headerlink" title="Marketing site (now singular!)"></a>Marketing site (now singular!)</h4><p>After a long-running effort of migrating page by page, all of the index, careers, about, customers, POPSUGAR case study, The Economist case study pages are now living under the Git repo that we intend to use going forward, kalohq/eros!</p>
+<p>The background here is that we wanted to quickly release a new marketing site some time ago which would be a significant overhaul of the previous one, and the agency we hired created a completely new repo, with completely different technologies which were incompatible with our existing CI or website assets.</p>
+<p>This meant we had website pages scattered across both repos, duplicate assets, two different CI processes, as well as Nginx proxy logic that could handle routing between two different sites… which we have not been proud of!</p>
+<p>The work to untangle this mess has been exclusively drive and pushed by Alex Pate and a huge shout out to him, as we’ll now be able to move a lot faster and be able to optimise our site’s speed and infrastructure. <img class="github-emoji" title=":clap:" alt=":clap:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44f.png?v7" height="20" width="20"></p>
+<h4 id="New-case-study"><a href="#New-case-study" class="headerlink" title="New case study"></a>New case study</h4><p>There’s now a new case study on our site for <a href="https://rootsrated.com/" target="_blank" rel="external">RootsRated</a>! You can see it <a href="https://kalohq.com/customers/roots-rated" target="_blank" rel="external">here</a>.</p>
+<p><img src="./roots.png" alt=""></p>
+<center><i><em>Sneak view… so hipster!</em></i></center>
+
+<h4 id="UI-styling-abstractions"><a href="#UI-styling-abstractions" class="headerlink" title="UI styling abstractions"></a>UI styling abstractions</h4><p>Continued migrating components into the <a href="https://github.com/kalohq/ui" target="_blank" rel="external">UI library</a>, this week having moved the Checkbox and Radio!</p>
+<h4 id="Rebrand"><a href="#Rebrand" class="headerlink" title="Rebrand"></a>Rebrand</h4><p>We can actually start to forget about the rebrand pretty soon.</p>
+<p>Our core infrastructure that was still using this mysterious word <code>lystable</code> has been updated this sprint and this includes:</p>
+<ul>
+<li>LWS files service, so all our shareable file links will now use a rebranded bucket name and</li>
+<li>Docker Hub</li>
+</ul>
+<p>As a sidenote, if you want to see what a Docker Hub 404 page looks like, just type in a random collection of characters: <a href="https://hub.docker.com/u/lystable/" target="_blank" rel="external">https://hub.docker.com/u/lystable/</a>. Ours is not that bad either actually: <a href="https://kalohq.com/lystable" target="_blank" rel="external">https://kalohq.com/lystable</a>. Oh yeah, that Kalo 404 page also got released this sprint. <img class="github-emoji" title=":tada:" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png?v7" height="20" width="20"></p>
+<h3 id="PaaS-progress"><a href="#PaaS-progress" class="headerlink" title="PaaS progress"></a>PaaS progress</h3><p>PaaS here, PaaS there… what does this thing even look like anyway?</p>
+<p>As this post is public we can’t add the login credentials here, but if you visit the <a href="https://internal-marathon-monitoring.lystable.ink/ui/#/" target="_blank" rel="external">dashboard UI</a> then you can get the credentials from any of Chris, Graeme or Alex Muscar.</p>
+<h4 id="Remember-that-CI-end-game-we’re-trying-to-get-to-again"><a href="#Remember-that-CI-end-game-we’re-trying-to-get-to-again" class="headerlink" title="Remember that CI end-game we’re trying to get to again?"></a>Remember that CI end-game we’re trying to get to again?</h4><p>You can refresh your memory by checking the lightning talk slides <a href="https://docs.google.com/presentation/d/10VvntvUbn5UA9grz4fNabbN5MHsyLDernc-8FkRCY84/edit" target="_blank" rel="external">here</a>.</p>
+<h4 id="What-did-we-release"><a href="#What-did-we-release" class="headerlink" title="What did we release"></a>What did we release</h4><p>We’ve made progress this past sprint, as we’ve both:</p>
+<ul>
+<li><p>migrated the application configuration to the LWS repo</p>
+</li>
+<li><p>deployed the Nameko workers on staging, having stopped the Salt deployment in that environment altogether</p>
+</li>
+<li><p>integrated the PaaS with our existing service discovery platform (<a href="https://www.consul.io/" target="_blank" rel="external">Hashicorp’s Consul</a>), which means that we, completely seamlessly, kept all the benefits of <a href="https://www.consul.io/docs/agent/dns.html" target="_blank" rel="external">DNS-based service discovery</a> and service alerting in <a href="https://internal-service-monitoring.lystable.com/" target="_blank" rel="external">Grafana</a>. We used Cisco’s open-source project <a href="https://github.com/mantl/mesos-consul" target="_blank" rel="external">mesos-consul</a> to achieve this integration, and guess what: it’s running on the PaaS also :)</p>
+</li>
+<li><p>updated the re-configuration of LWS and Nameko <a href="https://github.com/kalohq/infrastructure/blob/develop/runbooks/update-lws-config.md" target="_blank" rel="external">runbook</a> to reflect the new way to update application configuration</p>
+</li>
+</ul>
+<p>You got that right.. now don’t get too drunk with power!</p>
+<p><img src="https://media.giphy.com/media/BTkWBGZLEcq8E/giphy.gif" alt="wow"></p>
+<h4 id="What-more-do-we-need-to-go-live"><a href="#What-more-do-we-need-to-go-live" class="headerlink" title="What more do we need to go live"></a>What more do we need to go live</h4><p>We’ve still only got the PaaS on staging and not on production. The reason for this is we are missing just a bit more tooling. But not too much:</p>
+<ul>
+<li>expose Docker console logs via the PaaS UI</li>
+<li>mount Docker container logs on the PaaS VMs</li>
+<li>pick what HW profiles we’re going to use in production going forward</li>
+<li>then it’s all the production-readiness boilerplate around external disk volumes, clustering, runbooks on how to manage services, etc… donkey work really</li>
+</ul>
+<p><img src="./donkey.png" alt=""></p>
+<h3 id="Release-Process-Makeover"><a href="#Release-Process-Makeover" class="headerlink" title="Release Process Makeover"></a>Release Process Makeover</h3><h4 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h4><p>Driven by the drastic speedup in release times (TTP) that we want (see our <a href="okr post">OKR crew post</a>), and the pace at which we wish to evolve our product, we feel forced to reconsider whether our current release process is a best fit.</p>
+<p>Our thoughts are that it’s far from the process we’d like to have, and one of our driving principles is that when development finishes and before the feature has been merged, so should integration testing, user testing and performance testing have also finished. As a result, we’re driven to not just reduce the gap between merging a feature branch and deploying that to production, but to completely remove it.</p>
+<p>Obviously this will not be a magical new world where user, performance and integration testing suddenly are part of the CI, which we could definitely work towards, but what we do want to have is the tools to support this in the same way as now, except with less Git and Github faffing about.</p>
+<p>A bit more extensive review of current whereabouts and desired process, as well as healthy debate can be found in this <a href="https://gist.github.com/yannispanousis/da5872d22fd64596480ad9bfeff4c3e9" target="_blank" rel="external">gist</a>. Do read through!</p>
+<h4 id="Getting-there"><a href="#Getting-there" class="headerlink" title="Getting there"></a>Getting there</h4><p>The work to get us to this new world will involve:</p>
+<ul>
+<li>ensuring a smooth management of remote deploy environments</li>
+<li>allowing remote deploy environments to easily import production-like data</li>
+<li>migrating all the Dennis logic around preparing and creating release artifacts into the master branch CI build (incrementing version numbers, adding change logs etc.)</li>
+<li>allowing us to optionally utilise the staging environment before releasing, placing a lock on it</li>
+<li>scrapping the develop branch</li>
+</ul>
+<p>We can say with confidence that the path to that simpler world can be worked on incrementally, to the point where we don’t consider the final step of removing <code>develop</code> such a biggie.</p>
+<h4 id="Remote-Deploys"><a href="#Remote-Deploys" class="headerlink" title="Remote Deploys"></a>Remote Deploys</h4><p>Remote deployments will be getting more and more love, to the point where we feel very comfortable upgrading components to latest versions, switching out individual components, clearing data and so on.</p>
+<p>All of this will be to support early user, integration and performance testing, which is what we consider the ways of gaining the confidence we need to release directly to production.</p>
+<p><strong>This sprint</strong> we took a very small first step which is to allow the Github PR and <code>review</code> label to be lazily discovered at the time that the Circle build reaches the point of doing a remote deploy, to check if it should do it or not. This means those changes you used to push without initially having a PR, will now trigger a remote deploy without needing a second push… woot!</p>
+<p><img src="./remote-deploy.png" alt=""></p>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><p>What’s the plan, batman?</p>
+<h4 id="Marketing-site-makeover…-again"><a href="#Marketing-site-makeover…-again" class="headerlink" title="Marketing site makeover… again!"></a>Marketing site makeover… again!</h4><p>What with the rebrand, the self team onboarding and new case studies, our product shopfront is ever-changing!</p>
+<p>This sprint the new designs will be getting full focus, and if you’re impatient, hit the <a href="https://kalohq.ink" target="_blank" rel="external">staging link</a> or check the <a href="sprint board">sprint board</a> now and then to see how it’s going!</p>
+<p><img class="github-emoji" title=":nail_care:" alt=":nail_care:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f485.png?v7" height="20" width="20"></p>
+<h4 id="Faster-i-e-better-user-experience"><a href="#Faster-i-e-better-user-experience" class="headerlink" title="Faster (i.e. better!) user experience"></a>Faster (i.e. better!) user experience</h4><p>Chris is back!</p>
+<p>After catching up with all the emails, he’s gonna be pushing the agenda on performance improvements, which means scoping work across cohorts and rolling out bundle optimisations for faster application load times… it’s gonna be a huge team effort from all of us for our users!</p>
+<p><img class="github-emoji" title=":racing_car:" alt=":racing_car:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3ce.png?v7" height="20" width="20"></p>
+<h4 id="More-holidays"><a href="#More-holidays" class="headerlink" title="More holidays"></a>More holidays</h4><p>Yes, yes Yannis is on holiday again… for the whole of next week… but look at all that stuff we delivered! <img class="github-emoji" title=":beach_umbrella:" alt=":beach_umbrella:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3d6.png?v7" height="20" width="20"></p>
+<h2 id="Release-watch"><a href="#Release-watch" class="headerlink" title="Release watch"></a>Release watch</h2><h4 id="Backend"><a href="#Backend" class="headerlink" title="Backend"></a>Backend</h4><p>Flying for the most part, we had <strong>4 out of 5 minor releases under 3 hours</strong> but 1 outlier taking 24 hours.</p>
+<p>Take-aways here:</p>
+<ul>
+<li>more user testing before staging</li>
+</ul>
+<h4 id="Frontend"><a href="#Frontend" class="headerlink" title="Frontend"></a>Frontend</h4><p>Believe it or not, frontend releases have been even faster than that, we’re rolling them out at an average of 75 minutes per release! A big shout out to everyone on the frontend!</p>
+<p><img class="github-emoji" title=":clap:" alt=":clap:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44f.png?v7" height="20" width="20"></p>
+<h2 id="Au-revoir"><a href="#Au-revoir" class="headerlink" title="Au revoir!"></a>Au revoir!</h2><p><img src="./aurevoir.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;This is a sprintly summary of upcoming, delivered and in-progress work for the &lt;strong&gt;Infra DX Crew&lt;/strong&gt;.&lt;br&gt;It’ll cont
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>5. Man down</title>
+    <link href="https://kalohq.github.io/infra-dx-blog/2017/05/31/5-man-down/"/>
+    <id>https://kalohq.github.io/infra-dx-blog/2017/05/31/5-man-down/</id>
+    <published>2017-05-31T13:46:30.000Z</published>
+    <updated>2017-06-09T15:08:29.208Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>Kicked off lots of things: data loading, pagination UX, and performance.</li>
+<li>Code splitting (mostly) there 🎉</li>
+<li>Refined <a href="https://gist.github.com/chrisui/9d474b9a23e9ab9cbfc21445f98c2785" target="_blank" rel="external">frontend cohort process</a></li>
+<li>Category update improvements</li>
+<li>A (slightly) new landing page</li>
+</ul>
+</blockquote>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>After a pretty intense rebrand focused sprint, things are <em>mostly</em> back to normal. Although for the past and upcoming sprints, the crew has mostly been one man down:</p>
+<ul>
+<li>Yannis was away for most of the previous sprint</li>
+<li>Chris is away for most of the upcoming sprint</li>
+</ul>
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><p>Where has our focus been?</p>
+<h4 id="Data-loading-UX"><a href="#Data-loading-UX" class="headerlink" title="Data loading UX"></a>Data loading UX</h4><p>Chris kicked off discussions with the product team around data loading and the best UX practices surrounding this.</p>
+<p>He’s also done some cool work on building out some skeleton components, that can be used to reduce the perceived load time that a user experiences.</p>
+<p><img src="./skeleton-kit.png" alt="Skeleton Loading Kit"></p>
+<h4 id="Code-splitting"><a href="#Code-splitting" class="headerlink" title="Code splitting"></a>Code splitting</h4><p>Chris has powered on with the performance theme, looking at how our frontend bundles can be split up to only load code when it’s required.</p>
+<h4 id="Refined-f-e-cohort-process"><a href="#Refined-f-e-cohort-process" class="headerlink" title="Refined f/e cohort process"></a>Refined f/e cohort process</h4><p>As part of the ongoing push to document all the things, Chris has put together some documentation on the processes of the Frontend Cohort, which you can check out <strong><a href="https://gist.github.com/chrisui/9d474b9a23e9ab9cbfc21445f98c2785" target="_blank" rel="external">here</a>!</strong></p>
+<h4 id="New-landing-page-header"><a href="#New-landing-page-header" class="headerlink" title="New landing page header"></a>New landing page header</h4><p>We’ve shipped the new header of our landing page, designed by Pete and featuring one of our customers.</p>
+<p><img src="./eros-header.jpg" alt="Eros Header"></p>
+<h4 id="Slow-category-updates"><a href="#Slow-category-updates" class="headerlink" title="Slow category updates"></a>Slow category updates</h4><p>Slow category update improvements have been reviewed and are ready, but we’ll be preceding them with a couple days of monitoring to get a fact-based measurement for how much better we’ve made it for the user, as well as to be better aware of Elasticsearch indexing issues in the future.</p>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><h4 id="Marketing-site-updates"><a href="#Marketing-site-updates" class="headerlink" title="Marketing site updates"></a>Marketing site updates</h4><p>I (Alex) will continue on migrating pages from the old marketing site in to our shiny new repo. We’re about 75% of the way to having one repo, and on track to migrate everything by the end of the quarter.</p>
+<h4 id="PasS-Platform-as-a-Service"><a href="#PasS-Platform-as-a-Service" class="headerlink" title="PasS (Platform as a Service)"></a>PasS (Platform as a Service)</h4><p>Yannis will start working on getting the Nameko workers deploying in the new way, and this infra should be deployed on staging, without the changes yet being reflected in the LWS repo, so we can ensure stability. Check out <a href="https://lystable.atlassian.net/browse/INFRA-63" target="_blank" rel="external">this ticket</a> for more context.</p>
+<p>Also PaaS related, Yannis has started on integrating it with Consul to achieve service discovery, which will result in DNS-based service discovery and alerting as a result, out of the box 🎁.</p>
+<h4 id="Category-update-improvements"><a href="#Category-update-improvements" class="headerlink" title="Category update improvements"></a>Category update improvements</h4><p>Yannis will be releasing the updates to address the slow category updates (see above) this sprint.</p>
+<h2 id="Release-Watch"><a href="#Release-Watch" class="headerlink" title="Release Watch"></a>Release Watch</h2><blockquote>
+<p>This is a recurring section retrospecting any releases which didn’t seem to go as smoothly as we would’ve liked.</p>
+</blockquote>
+<h4 id="Backend"><a href="#Backend" class="headerlink" title="Backend"></a>Backend</h4><ul>
+<li>Total number of releases: 4</li>
+<li>Average release time: 120 minutes</li>
+<li>Maximum release time: 180 minutes</li>
+</ul>
+<h4 id="Frontend"><a href="#Frontend" class="headerlink" title="Frontend"></a>Frontend</h4><ul>
+<li>Total number of releases: 1</li>
+<li>Average release time: 180 minutes</li>
+<li>Maximum release time: 180 minutes</li>
+</ul>
+<blockquote>
+<p>See ya!<br>✌️ AP</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;This is a sprintly summary of upcoming, delivered and in-progress work for the &lt;strong&gt;Infra DX Crew&lt;/strong&gt;.&lt;br&gt;It’ll cont
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>4. Three wise men</title>
+    <link href="https://kalohq.github.io/infra-dx-blog/2017/05/24/4-Three-wise-men/"/>
+    <id>https://kalohq.github.io/infra-dx-blog/2017/05/24/4-Three-wise-men/</id>
+    <published>2017-05-24T21:22:15.000Z</published>
+    <updated>2017-06-09T15:08:29.208Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>We have a new crew member! Welcome <strong>Alex Pate</strong>!</li>
+<li>We’re taking a week off! (Not quite so bluntly but we do have a few holidays over this sprint and the next)</li>
+<li>We rebranded! Huge effort from Yannis and AP on planning and executing the engineering side.</li>
+<li>There’s an awesome new “Skeleton UI Kit” coming</li>
+<li>Work is ticking along nicely on the performance focus<ul>
+<li>Core bundles are at &gt;30% reduction</li>
+<li>Done an initial investigation into data loading (work being scoped)</li>
+<li>Kicking off scoping of work around ux patterns</li>
+</ul>
+</li>
+<li>Not too much in <strong>Release Watch</strong> this week. Most releases take an hour from prep to deploy.</li>
+</ul>
+</blockquote>
+<h2 id="“What-even-is-Myrrh-”"><a href="#“What-even-is-Myrrh-”" class="headerlink" title="“What even is Myrrh?”"></a><em>“What even is Myrrh?”</em></h2><p>We have added a seriously wise man to the crew in AP. With our focus being on ensuring engineers have what they need to deliver a good platform while also keeping that platform working as smooth as possible we saw a definite alignment with Alex’s goals. Alex focus is, with a design mindset, to bring stability and consistency to how we engineer UI’s at Lystable. At least that’s what it is until he tells me that’s wrong after he reads this. Anyhow!</p>
+<p>Get on with it, Chris.</p>
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><p>Where has our focus been?</p>
+<h4 id="Smoothest-Rebrand-EVER"><a href="#Smoothest-Rebrand-EVER" class="headerlink" title="Smoothest Rebrand EVER"></a>Smoothest Rebrand EVER</h4><p>Thanks to some awesome planning and work by Yannis, AP and the rest of the rebrand team this execution on Monday went off and was completed within under 2 hours.</p>
+<p><br><br><img src="https://media.giphy.com/media/AP94i0chEPXSU/giphy.gif" alt="smooooth"></p>
+<p><center>Smoother than P Diddy</center><br><br></p>
+<p>It’s worth noting that there is still lots of internal infra that will be renamed over coming weeks so keep your eye out for “Lystable”, whatever <em>that</em> is.</p>
+<h4 id="Performance-investigation"><a href="#Performance-investigation" class="headerlink" title="Performance investigation"></a>Performance investigation</h4><p>We’ve spent some time investigating the loading performance of certain areas of our application and by breaking down events into a high level timeline we’ve been able to target some improvements to make.</p>
+<p>See the initial glimpse <a href="https://github.com/kalohq/frontend/blob/10015a8ca2d3a43ca5a40fb6b60ff4fc18a16377/docs/research/170516-data-fetching-performance.md" target="_blank" rel="external">here</a></p>
+<p>Here’s an example timeline we came up with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">-----&gt; | Fetch unrelated queries for hidden ui</div><div class="line">-----&gt; | Fetch projects list</div><div class="line">       | ---&gt; | void (cpu churn?)</div><div class="line">              | -----&gt; | Fetch related freelancers</div><div class="line">              | -----&gt; | Fetch related users</div><div class="line">                | ---&gt; | void (cpu churn?)</div><div class="line">                       | -----&gt; | Fetch freelancer &amp; user image files</div><div class="line">                       | -----&gt; | Fetch freelancer skills (unused)</div><div class="line">                       | -----&gt; | Fetch freelancer profiles (unused)</div><div class="line">                                | ---&gt; | void (cpu churn?) before rendering results</div></pre></td></tr></table></figure>
+<p>We’ll be taking this and discussing across cohorts what actions we can take to fix the issues here. We’ll aim to scope up this work so we can prioritise it this quarter.</p>
+<h4 id="Skeleton-layouts"><a href="#Skeleton-layouts" class="headerlink" title="Skeleton layouts"></a>Skeleton layouts</h4><p>In an effort to make loading of pages less janky we are introducing a design paradigm called “skeleton loading”. This shows rough outlines of the anticipated content layout while it is loading. We can show this while loading assets, data or anything!</p>
+<p>You can follow the PR for this ui kit <a href="https://github.com/kalohq/ui/pull/7" target="_blank" rel="external">here</a>.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1042432/26374037/c222cfa4-3ffb-11e7-9589-65a686083db9.png" alt="skeleton ui"></p>
+<h2 id="Release-Watch"><a href="#Release-Watch" class="headerlink" title="Release Watch"></a>Release Watch</h2><p>Going to ignore the hotfixes for the rebrand here since they are very special cases. (v0.199.1 f/e, v0.214.1 b/e)</p>
+<h4 id="Frontend"><a href="#Frontend" class="headerlink" title="Frontend"></a>Frontend</h4><ul>
+<li>1 minor release (70 mins)</li>
+<li>2 hotfix releases (1 hour and 5.5 hours)</li>
+</ul>
+<h4 id="Backend"><a href="#Backend" class="headerlink" title="Backend"></a>Backend</h4><ul>
+<li>1 minor release (72 mins)</li>
+</ul>
+<h4 id="Takeaways"><a href="#Takeaways" class="headerlink" title="Takeaways"></a>Takeaways</h4><ul>
+<li>We’re generally sitting around an hour for releases which which is pretty good but we hope to improve!</li>
+<li>Should investigate why a hotfix was sitting around for nearly 6 hours</li>
+</ul>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><p>What’s the plan, batman?</p>
+<h5 id="Holiday-Season"><a href="#Holiday-Season" class="headerlink" title="Holiday Season"></a>Holiday Season</h5><p>Yannis is only here one day next week (in the sprint) where he’ll be mostly tidying up final rebrand infra bits and doing a bit of work on slow category updates.</p>
+<p>I (Chris) am only here Thursday/Friday and I’m focusing on getting the code splitting work into a “ready to merge and release” state while scoping a ton of work for next month across design, frontend and backend (all focused around performance).</p>
+<h5 id="Continued-marketing-migration"><a href="#Continued-marketing-migration" class="headerlink" title="Continued marketing migration"></a>Continued marketing migration</h5><p>AP is continuing to migrate old marketing pages into the new site.</p>
+<p>You can see all the planned work for this sprint on our <a href="https://lystable.atlassian.net/secure/RapidBoard.jspa?rapidView=13" target="_blank" rel="external">jira board</a>!</p>
+<blockquote>
+<p>Thanks for reading!<br>Chris</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;This is a sprintly summary of upcoming, delivered and in-progress work for the &lt;strong&gt;Infra DX Crew&lt;/strong&gt;.&lt;br&gt;It’ll cont
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>3. To be named</title>
+    <link href="https://kalohq.github.io/infra-dx-blog/2017/05/19/3-to-be-named/"/>
+    <id>https://kalohq.github.io/infra-dx-blog/2017/05/19/3-to-be-named/</id>
+    <published>2017-05-19T11:45:52.000Z</published>
+    <updated>2017-06-09T15:08:29.208Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>A new <strong>Release Watch</strong> section on the blog to retrospect releases with hiccups.</li>
+<li>Lots of progress on PaaS which Yannis will be giving a run through of on Monday!</li>
+<li>Feature flag service <a href="https://lystable.atlassian.net/browse/INFRA-77" target="_blank" rel="external">deployed</a>.</li>
+<li>Code splitting showing good trends with a ~20% reduction in initial bundle so far.</li>
+<li>Documentation: Strategy and specific form documentation delivered.</li>
+<li>Netflix functionality officially <em>DEAD</em> on the front-end.</li>
+<li>Rebrand! Rebrand! Rebrand!</li>
+</ul>
+</blockquote>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p><img src="./hellokalo.png" alt="hello kalo"></p>
+<p>The last sprint certainly had some interesting bumps (and a lot of 🍻) but beyond all that <em>we have a new name</em>! The rebrand is pretty much going to take over a few people’s sprint this week which is a shame, but we’ve put a lot of effort into planning to make sure it doesn’t spiral out of control.</p>
+<p><em>This sprint update is coming a little late owing to some illness so we’re already over half way through already!</em></p>
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><p>Where has our focus been?</p>
+<h4 id="PaaS"><a href="#PaaS" class="headerlink" title="PaaS"></a>PaaS</h4><p>More work than can fit in an update has been delivered on this front and Yannis will be delivering this in a presentation/demo/slides format soon!</p>
+<p>From Yannis himself:</p>
+<blockquote>
+<p><em>A brave new world of more control is approaching, and that’s not only for new services…! Stay tuned for the scheduled update on Monday 4.30pm UK time in the London kitchen.</em></p>
+</blockquote>
+<h4 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h4><ol>
+<li>We published our mid-term strategy for documentation. You can read it in the gist <a href="https://gist.github.com/chrisui/552455b3bfd1d56a95e2d93c7a0d05fb" target="_blank" rel="external">here</a>!</li>
+<li>We delivered documentation all about how we approach forms on the front-end. This covers everything from the theory to the various abstractions we have in place to help build forms in our applications. You can find the entry point to these docs <a href="https://github.com/lystable/lystable-frontend/blob/develop/docs/guides/forms.md" target="_blank" rel="external">here</a>.</li>
+</ol>
+<h4 id="Code-splitting"><a href="#Code-splitting" class="headerlink" title="Code splitting"></a>Code splitting</h4><p>Some considerable work has gone into updating how we bundle together our applications and deliver them to the user. This is all working towards faster AND more sustainable [at scale] load times.</p>
+<p>You can follow along on the <a href="https://github.com/lystable/lystable-frontend/pull/1883" target="_blank" rel="external">Pull Request</a> though it’s pretty wip atm.</p>
+<p>Some highlights:</p>
+<ul>
+<li>Using an extracted manifest to leverage browser cache better when only part of the application updates</li>
+<li>A specific “vendor” bundle to, again, leverage browser cache when our dependencies aren’t changing</li>
+<li>Targeting some duplicated/fat dependencies</li>
+<li>Lots more tweaking to be done to minimize initial load of main app bundles.</li>
+<li>Further identified/scoped work<ul>
+<li>Use prefetching/preloading to speed up load times even further. <a href="https://lystable.atlassian.net/browse/INFRA-85" target="_blank" rel="external">INFRA-85</a></li>
+<li>Parallelize loading of bundles and data those bundles will require when they can initialise </li>
+</ul>
+</li>
+</ul>
+<h4 id="Netflix-GONE"><a href="#Netflix-GONE" class="headerlink" title="Netflix GONE"></a>Netflix GONE</h4><p>We’ve officially removed the last netflix-specific features from the UI.</p>
+<p><img src="./killnetflix.png" alt="kill netflix"></p>
+<h4 id="Marketing-site-consolidations"><a href="#Marketing-site-consolidations" class="headerlink" title="Marketing site consolidations"></a>Marketing site consolidations</h4><p>With AlexP’s invaluable help in migrating the index page from <code>lystable/lystable</code> to <code>lystable/eros</code> we switched the primary S3 bucket in the Nginx proxy to be <code>lystable/eros</code> and we now only need to migrate the last few pages from <code>lystable/lystable</code> until we can kill it forever!!</p>
+<p>Tracked <a href="https://lystable.atlassian.net/browse/INFRA-76" target="_blank" rel="external">here</a></p>
+<h2 id="Release-Watch"><a href="#Release-Watch" class="headerlink" title="Release Watch"></a>Release Watch</h2><blockquote>
+<p>This is a recurring section retrospecting any releases which didn’t seem to go as smoothly as we would’ve liked.</p>
+</blockquote>
+<h4 id="Backend"><a href="#Backend" class="headerlink" title="Backend"></a>Backend</h4><p>Releases this week have been as light as…… a kalo leaf!</p>
+<p><img src="https://s-media-cache-ak0.pinimg.com/236x/fb/c8/e8/fbc8e83dfc69fef4029c0ca69c2c49d2.jpg" alt="kalo leaf"></p>
+<ul>
+<li>Number of minor releases: 6</li>
+<li>Number of hotfix releases: 1</li>
+<li>Average release time for backend: 70 minutes</li>
+<li>Maximum release time: 90 minutes</li>
+</ul>
+<h4 id="Frontend"><a href="#Frontend" class="headerlink" title="Frontend"></a>Frontend</h4><p>Frontend have been a bit of a mix, with a couple reaching lava speed</p>
+<p><img src="http://study.com/cimages/multimages/16/lavaflow.jpg" alt="lava"></p>
+<ul>
+<li>Number of minor releases: 4</li>
+<li>Number of hotfix releases: 0</li>
+<li>50% of the releases averaged: 60 minutes</li>
+<li>50% of the releases were at: 24 hours</li>
+</ul>
+<h4 id="Takeaways-this-week"><a href="#Takeaways-this-week" class="headerlink" title="Takeaways this week"></a>Takeaways this week</h4><p>Focus on:</p>
+<ul>
+<li>Early integration testing</li>
+<li>Early user testing or imperfect releasing with hotfix release to achieve the ideal design shortly after</li>
+<li>More frequent releasing, to avoid needing to identify which feature PR the error was caused by the natural assumption in this case was the error came from the dominant PR which consisted 98% of the code changes, but we were wrong… !</li>
+</ul>
+<h4 id="Work-for-Infra-DX"><a href="#Work-for-Infra-DX" class="headerlink" title="Work for Infra-DX"></a>Work for Infra-DX</h4><ul>
+<li>Giving early emphasis to flakey failures which hopefully Chris’ work on tracking flakey tests will help</li>
+</ul>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><p>What’s the plan, batman?</p>
+<h5 id="Rebrand-Rebrand-Rebrand"><a href="#Rebrand-Rebrand-Rebrand" class="headerlink" title="Rebrand! Rebrand! Rebrand!"></a>Rebrand! Rebrand! Rebrand!</h5><p><a href="http://itsalmo.st/#rebrandtime" target="_blank" rel="external">Time is ticking</a>!</p>
+<p>We’re doing our best to roll out all the infrastructure we can, in advance of the launch time, to minimise the buttons we have to press at the final moments of “Lystable”, to reduce the moving parts and any potential risks.</p>
+<p><strong>Plan of action</strong></p>
+<ul>
+<li>We’ll be testing all of the infra, platform and marketing changes on staging (kalohq.ink!) on Friday 19th</li>
+<li>We’ll rollout the new marketing site to production on new S3 buckets and side by side on the Nginx proxy</li>
+<li>Come launch time, which is 1pm on Monday 22nd, we’ll rollout: backend, frontend, Nginx redirects… simples!</li>
+</ul>
+<p>Tracked <a href="https://lystable.atlassian.net/browse/INFRA-64" target="_blank" rel="external">here</a>.</p>
+<h5 id="More-Performance-Drive"><a href="#More-Performance-Drive" class="headerlink" title="More Performance Drive"></a>More Performance Drive</h5><p>Just a continuation of the ongoing performance focus. The ultimate goal for this sprint is to have a) scalable front-end builds and b) we have identified and scoped work to improve data performance everywhere.</p>
+<ul>
+<li><a href="https://lystable.atlassian.net/browse/INFRA-18" target="_blank" rel="external">Optimise builds</a></li>
+<li><a href="https://lystable.atlassian.net/browse/INFRA-73" target="_blank" rel="external">Data performance investigations</a></li>
+</ul>
+<h4 id="E2E-retries-and-insights"><a href="#E2E-retries-and-insights" class="headerlink" title="E2E retries and insights"></a>E2E retries and insights</h4><p>Browser based e2e tests are always going to have <em>some</em> level of flakiness. They cover your entire stack and are prone to difficult to predict environmental issues. </p>
+<p>Often we get into the habit of seeing an e2e failure and “just hitting rebuild”. We want to avoid this and be able to efficiently tackle areas of flakiness to push ourselves to the best possible situation.</p>
+<p>For this we have planned two things:</p>
+<ol>
+<li>Automatically retry failed scenarios. If it fails twice in a row we consider this a <strong>true failure</strong> and if it passes second time we class this as a <strong>flake failure</strong>. The author of these builds will be notified as such.</li>
+<li>Track all these failures with our new tracking api. This should help us identify sources of problems as well as give us the best priorities to tackle.</li>
+</ol>
+<h2 id="Insert-witty-ending"><a href="#Insert-witty-ending" class="headerlink" title="Insert witty ending"></a>Insert witty ending</h2><p>Way too tired for a full conclusion this week. As always feel free to reach out and chat about anything from above!</p>
+<blockquote>
+<p>Thanks for reading!<br>Chris</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;This is a sprintly summary of upcoming, delivered and in-progress work for the &lt;strong&gt;Infra DX Crew&lt;/strong&gt;.&lt;br&gt;It’ll cont
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>2. And so, man was given purpose</title>
-    <link href="https://lystable.github.io/infra-dx-blog/2017/05/11/2-man-was-given-purpose/"/>
-    <id>https://lystable.github.io/infra-dx-blog/2017/05/11/2-man-was-given-purpose/</id>
+    <link href="https://kalohq.github.io/infra-dx-blog/2017/05/11/2-man-was-given-purpose/"/>
+    <id>https://kalohq.github.io/infra-dx-blog/2017/05/11/2-man-was-given-purpose/</id>
     <published>2017-05-11T10:53:38.000Z</published>
-    <updated>2017-05-11T13:50:37.387Z</updated>
+    <updated>2017-06-09T15:33:13.718Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
@@ -161,34 +520,9 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://lystable.github.io/infra-dx-blog/2017/05/10/hello-world/"/>
-    <id>https://lystable.github.io/infra-dx-blog/2017/05/10/hello-world/</id>
-    <published>2017-05-10T15:10:33.341Z</published>
-    <updated>2017-05-10T15:10:33.341Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to the Infra DX Blog!</p>
-<p>From here we’ll be writing about the work we’re undertaking, what we’re delivering and<br>what we’re doing to make infrastructure and developer experience at Lystable great.</p>
-<p>We’ll have a recurring sprint update post and perhaps some others in between.</p>
-<blockquote>
-<p>Love,<br>The Infra DX Crew</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to the Infra DX Blog!&lt;/p&gt;
-&lt;p&gt;From here we’ll be writing about the work we’re undertaking, what we’re delivering and&lt;br&gt;what we’re
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>1. In the beginning</title>
-    <link href="https://lystable.github.io/infra-dx-blog/2017/05/03/1-In-the-beginning/"/>
-    <id>https://lystable.github.io/infra-dx-blog/2017/05/03/1-In-the-beginning/</id>
+    <link href="https://kalohq.github.io/infra-dx-blog/2017/05/03/1-In-the-beginning/"/>
+    <id>https://kalohq.github.io/infra-dx-blog/2017/05/03/1-In-the-beginning/</id>
     <published>2017-05-03T19:01:48.000Z</published>
     <updated>2017-05-11T13:50:37.387Z</updated>
     

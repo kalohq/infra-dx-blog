@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 6. See prophecy attached · Infra DX Blog</title><meta name="description" content="6. See prophecy attached - Infra DX Crew"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/infra-dx-blog/favicon.png"><link rel="stylesheet" href="/infra-dx-blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://kalohq.github.io/infra-dx-blog/atom.xml" title="Infra DX Blog"></head><body><div class="wrap"><header><ul class="nav nav-list"><li class="nav-list-item"><a href="/infra-dx-blog/" target="_self" class="nav-list-link">INFRA DX BLOG</a></li><li class="nav-list-item"><a href="/infra-dx-blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/lystable/infra-dx-blog" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">6. See prophecy attached</h1><div class="post-info">Jun 9, 2017</div><div class="post-content"><blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><p>The scoping prophets have laid pen on scroll…</p>
+<ul>
+<li>Marketing site to be getting another make over!</li>
+<li>How will we give users a faster (=== better!) experience</li>
+<li>A more fitting development process</li>
+</ul>
+<p>And as for already ongoing things…</p>
+<ul>
+<li>Second marketing site finally deprecated!!</li>
+<li>PaaS progress update</li>
+</ul>
+</blockquote>
+<h2 id="prophecy-pdf"><a href="#prophecy-pdf" class="headerlink" title="prophecy.pdf"></a>prophecy.pdf</h2><p><img src="./prophecypdf-l.png" alt=""></p>
+<center><i><em>From left to right: the Infra-Dx interpretation and the original transcript itself.</em></i></center>
+
+
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><h4 id="Marketing-site-now-singular"><a href="#Marketing-site-now-singular" class="headerlink" title="Marketing site (now singular!)"></a>Marketing site (now singular!)</h4><p>After a long-running effort of migrating page by page, all of the index, careers, about, customers, POPSUGAR case study, The Economist case study pages are now living under the Git repo that we intend to use going forward, kalohq/eros!</p>
+<p>The background here is that we wanted to quickly release a new marketing site some time ago which would be a significant overhaul of the previous one, and the agency we hired created a completely new repo, with completely different technologies which were incompatible with our existing CI or website assets.</p>
+<p>This meant we had website pages scattered across both repos, duplicate assets, two different CI processes, as well as Nginx proxy logic that could handle routing between two different sites… which we have not been proud of!</p>
+<p>The work to untangle this mess has been exclusively drive and pushed by Alex Pate and a huge shout out to him, as we’ll now be able to move a lot faster and be able to optimise our site’s speed and infrastructure. <img class="github-emoji" title=":clap:" alt=":clap:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44f.png?v7" height="20" width="20"></p>
+<h4 id="New-case-study"><a href="#New-case-study" class="headerlink" title="New case study"></a>New case study</h4><p>There’s now a new case study on our site for <a href="https://rootsrated.com/" target="_blank" rel="external">RootsRated</a>! You can see it <a href="https://kalohq.com/customers/roots-rated" target="_blank" rel="external">here</a>.</p>
+<p><img src="./roots.png" alt=""></p>
+<center><i><em>Sneak view… so hipster!</em></i></center>
+
+<h4 id="UI-styling-abstractions"><a href="#UI-styling-abstractions" class="headerlink" title="UI styling abstractions"></a>UI styling abstractions</h4><p>Continued migrating components into the <a href="https://github.com/kalohq/ui" target="_blank" rel="external">UI library</a>, this week having moved the Checkbox and Radio!</p>
+<h4 id="Rebrand"><a href="#Rebrand" class="headerlink" title="Rebrand"></a>Rebrand</h4><p>We can actually start to forget about the rebrand pretty soon.</p>
+<p>Our core infrastructure that was still using this mysterious word <code>lystable</code> has been updated this sprint and this includes:</p>
+<ul>
+<li>LWS files service, so all our shareable file links will now use a rebranded bucket name and</li>
+<li>Docker Hub</li>
+</ul>
+<p>As a sidenote, if you want to see what a Docker Hub 404 page looks like, just type in a random collection of characters: <a href="https://hub.docker.com/u/lystable/" target="_blank" rel="external">https://hub.docker.com/u/lystable/</a>. Ours is not that bad either actually: <a href="https://kalohq.com/lystable" target="_blank" rel="external">https://kalohq.com/lystable</a>. Oh yeah, that Kalo 404 page also got released this sprint. <img class="github-emoji" title=":tada:" alt=":tada:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png?v7" height="20" width="20"></p>
+<h3 id="PaaS-progress"><a href="#PaaS-progress" class="headerlink" title="PaaS progress"></a>PaaS progress</h3><p>PaaS here, PaaS there… what does this thing even look like anyway?</p>
+<p>As this post is public we can’t add the login credentials here, but if you visit the <a href="https://internal-marathon-monitoring.lystable.ink/ui/#/" target="_blank" rel="external">dashboard UI</a> then you can get the credentials from any of Chris, Graeme or Alex Muscar.</p>
+<h4 id="Remember-that-CI-end-game-we’re-trying-to-get-to-again"><a href="#Remember-that-CI-end-game-we’re-trying-to-get-to-again" class="headerlink" title="Remember that CI end-game we’re trying to get to again?"></a>Remember that CI end-game we’re trying to get to again?</h4><p>You can refresh your memory by checking the lightning talk slides <a href="https://docs.google.com/presentation/d/10VvntvUbn5UA9grz4fNabbN5MHsyLDernc-8FkRCY84/edit" target="_blank" rel="external">here</a>.</p>
+<h4 id="What-did-we-release"><a href="#What-did-we-release" class="headerlink" title="What did we release"></a>What did we release</h4><p>We’ve made progress this past sprint, as we’ve both:</p>
+<ul>
+<li><p>migrated the application configuration to the LWS repo</p>
+</li>
+<li><p>deployed the Nameko workers on staging, having stopped the Salt deployment in that environment altogether</p>
+</li>
+<li><p>integrated the PaaS with our existing service discovery platform (<a href="https://www.consul.io/" target="_blank" rel="external">Hashicorp’s Consul</a>), which means that we, completely seamlessly, kept all the benefits of <a href="https://www.consul.io/docs/agent/dns.html" target="_blank" rel="external">DNS-based service discovery</a> and service alerting in <a href="https://internal-service-monitoring.lystable.com/" target="_blank" rel="external">Grafana</a>. We used Cisco’s open-source project <a href="https://github.com/mantl/mesos-consul" target="_blank" rel="external">mesos-consul</a> to achieve this integration, and guess what: it’s running on the PaaS also :)</p>
+</li>
+<li><p>updated the re-configuration of LWS and Nameko <a href="https://github.com/kalohq/infrastructure/blob/develop/runbooks/update-lws-config.md" target="_blank" rel="external">runbook</a> to reflect the new way to update application configuration</p>
+</li>
+</ul>
+<p>You got that right.. now don’t get too drunk with power!</p>
+<p><img src="https://media.giphy.com/media/BTkWBGZLEcq8E/giphy.gif" alt="wow"></p>
+<h4 id="What-more-do-we-need-to-go-live"><a href="#What-more-do-we-need-to-go-live" class="headerlink" title="What more do we need to go live"></a>What more do we need to go live</h4><p>We’ve still only got the PaaS on staging and not on production. The reason for this is we are missing just a bit more tooling. But not too much:</p>
+<ul>
+<li>expose Docker console logs via the PaaS UI</li>
+<li>mount Docker container logs on the PaaS VMs</li>
+<li>pick what HW profiles we’re going to use in production going forward</li>
+<li>then it’s all the production-readiness boilerplate around external disk volumes, clustering, runbooks on how to manage services, etc… donkey work really</li>
+</ul>
+<p><img src="./donkey.png" alt=""></p>
+<h3 id="Release-Process-Makeover"><a href="#Release-Process-Makeover" class="headerlink" title="Release Process Makeover"></a>Release Process Makeover</h3><h4 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h4><p>Driven by the drastic speedup in release times (TTP) that we want (see our <a href="okr post">OKR crew post</a>), and the pace at which we wish to evolve our product, we feel forced to reconsider whether our current release process is a best fit.</p>
+<p>Our thoughts are that it’s far from the process we’d like to have, and one of our driving principles is that when development finishes and before the feature has been merged, so should integration testing, user testing and performance testing have also finished. As a result, we’re driven to not just reduce the gap between merging a feature branch and deploying that to production, but to completely remove it.</p>
+<p>Obviously this will not be a magical new world where user, performance and integration testing suddenly are part of the CI, which we could definitely work towards, but what we do want to have is the tools to support this in the same way as now, except with less Git and Github faffing about.</p>
+<p>A bit more extensive review of current whereabouts and desired process, as well as healthy debate can be found in this <a href="https://gist.github.com/yannispanousis/da5872d22fd64596480ad9bfeff4c3e9" target="_blank" rel="external">gist</a>. Do read through!</p>
+<h4 id="Getting-there"><a href="#Getting-there" class="headerlink" title="Getting there"></a>Getting there</h4><p>The work to get us to this new world will involve:</p>
+<ul>
+<li>ensuring a smooth management of remote deploy environments</li>
+<li>allowing remote deploy environments to easily import production-like data</li>
+<li>migrating all the Dennis logic around preparing and creating release artifacts into the master branch CI build (incrementing version numbers, adding change logs etc.)</li>
+<li>allowing us to optionally utilise the staging environment before releasing, placing a lock on it</li>
+<li>scrapping the develop branch</li>
+</ul>
+<p>We can say with confidence that the path to that simpler world can be worked on incrementally, to the point where we don’t consider the final step of removing <code>develop</code> such a biggie.</p>
+<h4 id="Remote-Deploys"><a href="#Remote-Deploys" class="headerlink" title="Remote Deploys"></a>Remote Deploys</h4><p>Remote deployments will be getting more and more love, to the point where we feel very comfortable upgrading components to latest versions, switching out individual components, clearing data and so on.</p>
+<p>All of this will be to support early user, integration and performance testing, which is what we consider the ways of gaining the confidence we need to release directly to production.</p>
+<p><strong>This sprint</strong> we took a very small first step which is to allow the Github PR and <code>review</code> label to be lazily discovered at the time that the Circle build reaches the point of doing a remote deploy, to check if it should do it or not. This means those changes you used to push without initially having a PR, will now trigger a remote deploy without needing a second push… woot!</p>
+<p><img src="./remote-deploy.png" alt=""></p>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><p>What’s the plan, batman?</p>
+<h4 id="Marketing-site-makeover…-again"><a href="#Marketing-site-makeover…-again" class="headerlink" title="Marketing site makeover… again!"></a>Marketing site makeover… again!</h4><p>What with the rebrand, the self team onboarding and new case studies, our product shopfront is ever-changing!</p>
+<p>This sprint the new designs will be getting full focus, and if you’re impatient, hit the <a href="https://kalohq.ink" target="_blank" rel="external">staging link</a> or check the <a href="sprint board">sprint board</a> now and then to see how it’s going!</p>
+<p><img class="github-emoji" title=":nail_care:" alt=":nail_care:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f485.png?v7" height="20" width="20"></p>
+<h4 id="Faster-i-e-better-user-experience"><a href="#Faster-i-e-better-user-experience" class="headerlink" title="Faster (i.e. better!) user experience"></a>Faster (i.e. better!) user experience</h4><p>Chris is back!</p>
+<p>After catching up with all the emails, he’s gonna be pushing the agenda on performance improvements, which means scoping work across cohorts and rolling out bundle optimisations for faster application load times… it’s gonna be a huge team effort from all of us for our users!</p>
+<p><img class="github-emoji" title=":racing_car:" alt=":racing_car:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3ce.png?v7" height="20" width="20"></p>
+<h4 id="More-holidays"><a href="#More-holidays" class="headerlink" title="More holidays"></a>More holidays</h4><p>Yes, yes Yannis is on holiday again… for the whole of next week… but look at all that stuff we delivered! <img class="github-emoji" title=":beach_umbrella:" alt=":beach_umbrella:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3d6.png?v7" height="20" width="20"></p>
+<h2 id="Release-watch"><a href="#Release-watch" class="headerlink" title="Release watch"></a>Release watch</h2><h4 id="Backend"><a href="#Backend" class="headerlink" title="Backend"></a>Backend</h4><p>Flying for the most part, we had <strong>4 out of 5 minor releases under 3 hours</strong> but 1 outlier taking 24 hours.</p>
+<p>Take-aways here:</p>
+<ul>
+<li>more user testing before staging</li>
+</ul>
+<h4 id="Frontend"><a href="#Frontend" class="headerlink" title="Frontend"></a>Frontend</h4><p>Believe it or not, frontend releases have been even faster than that, we’re rolling them out at an average of 75 minutes per release! A big shout out to everyone on the frontend!</p>
+<p><img class="github-emoji" title=":clap:" alt=":clap:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44f.png?v7" height="20" width="20"></p>
+<h2 id="Au-revoir"><a href="#Au-revoir" class="headerlink" title="Au revoir!"></a>Au revoir!</h2><p><img src="./aurevoir.png" alt=""></p>
+</div></article></div></main><footer><div class="copyright"><p>© 2015 - 2017 <a href="https://kalohq.github.io/infra-dx-blog">Infra DX Crew</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and a <a href="https://github.com/lystable/infra-dx-blog" target="_blank">heavily modified</a> <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 3. To be named · Infra DX Blog</title><meta name="description" content="3. To be named - Infra DX Crew"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/infra-dx-blog/favicon.png"><link rel="stylesheet" href="/infra-dx-blog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://kalohq.github.io/infra-dx-blog/atom.xml" title="Infra DX Blog"></head><body><div class="wrap"><header><ul class="nav nav-list"><li class="nav-list-item"><a href="/infra-dx-blog/" target="_self" class="nav-list-link">INFRA DX BLOG</a></li><li class="nav-list-item"><a href="/infra-dx-blog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/lystable/infra-dx-blog" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">3. To be named</h1><div class="post-info">May 19, 2017</div><div class="post-content"><blockquote>
+<p>This is a sprintly summary of upcoming, delivered and in-progress work for the <strong>Infra DX Crew</strong>.<br>It’ll contain technical musings, <something else=""> and probably a few memes.</something></p>
+<h4 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR"></a>TLDR</h4><ul>
+<li>A new <strong>Release Watch</strong> section on the blog to retrospect releases with hiccups.</li>
+<li>Lots of progress on PaaS which Yannis will be giving a run through of on Monday!</li>
+<li>Feature flag service <a href="https://lystable.atlassian.net/browse/INFRA-77" target="_blank" rel="external">deployed</a>.</li>
+<li>Code splitting showing good trends with a ~20% reduction in initial bundle so far.</li>
+<li>Documentation: Strategy and specific form documentation delivered.</li>
+<li>Netflix functionality officially <em>DEAD</em> on the front-end.</li>
+<li>Rebrand! Rebrand! Rebrand!</li>
+</ul>
+</blockquote>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p><img src="./hellokalo.png" alt="hello kalo"></p>
+<p>The last sprint certainly had some interesting bumps (and a lot of 🍻) but beyond all that <em>we have a new name</em>! The rebrand is pretty much going to take over a few people’s sprint this week which is a shame, but we’ve put a lot of effort into planning to make sure it doesn’t spiral out of control.</p>
+<p><em>This sprint update is coming a little late owing to some illness so we’re already over half way through already!</em></p>
+<h2 id="What-we-worked-on"><a href="#What-we-worked-on" class="headerlink" title="What we worked on"></a>What we worked on</h2><p>Where has our focus been?</p>
+<h4 id="PaaS"><a href="#PaaS" class="headerlink" title="PaaS"></a>PaaS</h4><p>More work than can fit in an update has been delivered on this front and Yannis will be delivering this in a presentation/demo/slides format soon!</p>
+<p>From Yannis himself:</p>
+<blockquote>
+<p><em>A brave new world of more control is approaching, and that’s not only for new services…! Stay tuned for the scheduled update on Monday 4.30pm UK time in the London kitchen.</em></p>
+</blockquote>
+<h4 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h4><ol>
+<li>We published our mid-term strategy for documentation. You can read it in the gist <a href="https://gist.github.com/chrisui/552455b3bfd1d56a95e2d93c7a0d05fb" target="_blank" rel="external">here</a>!</li>
+<li>We delivered documentation all about how we approach forms on the front-end. This covers everything from the theory to the various abstractions we have in place to help build forms in our applications. You can find the entry point to these docs <a href="https://github.com/lystable/lystable-frontend/blob/develop/docs/guides/forms.md" target="_blank" rel="external">here</a>.</li>
+</ol>
+<h4 id="Code-splitting"><a href="#Code-splitting" class="headerlink" title="Code splitting"></a>Code splitting</h4><p>Some considerable work has gone into updating how we bundle together our applications and deliver them to the user. This is all working towards faster AND more sustainable [at scale] load times.</p>
+<p>You can follow along on the <a href="https://github.com/lystable/lystable-frontend/pull/1883" target="_blank" rel="external">Pull Request</a> though it’s pretty wip atm.</p>
+<p>Some highlights:</p>
+<ul>
+<li>Using an extracted manifest to leverage browser cache better when only part of the application updates</li>
+<li>A specific “vendor” bundle to, again, leverage browser cache when our dependencies aren’t changing</li>
+<li>Targeting some duplicated/fat dependencies</li>
+<li>Lots more tweaking to be done to minimize initial load of main app bundles.</li>
+<li>Further identified/scoped work<ul>
+<li>Use prefetching/preloading to speed up load times even further. <a href="https://lystable.atlassian.net/browse/INFRA-85" target="_blank" rel="external">INFRA-85</a></li>
+<li>Parallelize loading of bundles and data those bundles will require when they can initialise </li>
+</ul>
+</li>
+</ul>
+<h4 id="Netflix-GONE"><a href="#Netflix-GONE" class="headerlink" title="Netflix GONE"></a>Netflix GONE</h4><p>We’ve officially removed the last netflix-specific features from the UI.</p>
+<p><img src="./killnetflix.png" alt="kill netflix"></p>
+<h4 id="Marketing-site-consolidations"><a href="#Marketing-site-consolidations" class="headerlink" title="Marketing site consolidations"></a>Marketing site consolidations</h4><p>With AlexP’s invaluable help in migrating the index page from <code>lystable/lystable</code> to <code>lystable/eros</code> we switched the primary S3 bucket in the Nginx proxy to be <code>lystable/eros</code> and we now only need to migrate the last few pages from <code>lystable/lystable</code> until we can kill it forever!!</p>
+<p>Tracked <a href="https://lystable.atlassian.net/browse/INFRA-76" target="_blank" rel="external">here</a></p>
+<h2 id="Release-Watch"><a href="#Release-Watch" class="headerlink" title="Release Watch"></a>Release Watch</h2><blockquote>
+<p>This is a recurring section retrospecting any releases which didn’t seem to go as smoothly as we would’ve liked.</p>
+</blockquote>
+<h4 id="Backend"><a href="#Backend" class="headerlink" title="Backend"></a>Backend</h4><p>Releases this week have been as light as…… a kalo leaf!</p>
+<p><img src="https://s-media-cache-ak0.pinimg.com/236x/fb/c8/e8/fbc8e83dfc69fef4029c0ca69c2c49d2.jpg" alt="kalo leaf"></p>
+<ul>
+<li>Number of minor releases: 6</li>
+<li>Number of hotfix releases: 1</li>
+<li>Average release time for backend: 70 minutes</li>
+<li>Maximum release time: 90 minutes</li>
+</ul>
+<h4 id="Frontend"><a href="#Frontend" class="headerlink" title="Frontend"></a>Frontend</h4><p>Frontend have been a bit of a mix, with a couple reaching lava speed</p>
+<p><img src="http://study.com/cimages/multimages/16/lavaflow.jpg" alt="lava"></p>
+<ul>
+<li>Number of minor releases: 4</li>
+<li>Number of hotfix releases: 0</li>
+<li>50% of the releases averaged: 60 minutes</li>
+<li>50% of the releases were at: 24 hours</li>
+</ul>
+<h4 id="Takeaways-this-week"><a href="#Takeaways-this-week" class="headerlink" title="Takeaways this week"></a>Takeaways this week</h4><p>Focus on:</p>
+<ul>
+<li>Early integration testing</li>
+<li>Early user testing or imperfect releasing with hotfix release to achieve the ideal design shortly after</li>
+<li>More frequent releasing, to avoid needing to identify which feature PR the error was caused by the natural assumption in this case was the error came from the dominant PR which consisted 98% of the code changes, but we were wrong… !</li>
+</ul>
+<h4 id="Work-for-Infra-DX"><a href="#Work-for-Infra-DX" class="headerlink" title="Work for Infra-DX"></a>Work for Infra-DX</h4><ul>
+<li>Giving early emphasis to flakey failures which hopefully Chris’ work on tracking flakey tests will help</li>
+</ul>
+<h2 id="What’s-up-next"><a href="#What’s-up-next" class="headerlink" title="What’s up next?"></a>What’s up next?</h2><p>What’s the plan, batman?</p>
+<h5 id="Rebrand-Rebrand-Rebrand"><a href="#Rebrand-Rebrand-Rebrand" class="headerlink" title="Rebrand! Rebrand! Rebrand!"></a>Rebrand! Rebrand! Rebrand!</h5><p><a href="http://itsalmo.st/#rebrandtime" target="_blank" rel="external">Time is ticking</a>!</p>
+<p>We’re doing our best to roll out all the infrastructure we can, in advance of the launch time, to minimise the buttons we have to press at the final moments of “Lystable”, to reduce the moving parts and any potential risks.</p>
+<p><strong>Plan of action</strong></p>
+<ul>
+<li>We’ll be testing all of the infra, platform and marketing changes on staging (kalohq.ink!) on Friday 19th</li>
+<li>We’ll rollout the new marketing site to production on new S3 buckets and side by side on the Nginx proxy</li>
+<li>Come launch time, which is 1pm on Monday 22nd, we’ll rollout: backend, frontend, Nginx redirects… simples!</li>
+</ul>
+<p>Tracked <a href="https://lystable.atlassian.net/browse/INFRA-64" target="_blank" rel="external">here</a>.</p>
+<h5 id="More-Performance-Drive"><a href="#More-Performance-Drive" class="headerlink" title="More Performance Drive"></a>More Performance Drive</h5><p>Just a continuation of the ongoing performance focus. The ultimate goal for this sprint is to have a) scalable front-end builds and b) we have identified and scoped work to improve data performance everywhere.</p>
+<ul>
+<li><a href="https://lystable.atlassian.net/browse/INFRA-18" target="_blank" rel="external">Optimise builds</a></li>
+<li><a href="https://lystable.atlassian.net/browse/INFRA-73" target="_blank" rel="external">Data performance investigations</a></li>
+</ul>
+<h4 id="E2E-retries-and-insights"><a href="#E2E-retries-and-insights" class="headerlink" title="E2E retries and insights"></a>E2E retries and insights</h4><p>Browser based e2e tests are always going to have <em>some</em> level of flakiness. They cover your entire stack and are prone to difficult to predict environmental issues. </p>
+<p>Often we get into the habit of seeing an e2e failure and “just hitting rebuild”. We want to avoid this and be able to efficiently tackle areas of flakiness to push ourselves to the best possible situation.</p>
+<p>For this we have planned two things:</p>
+<ol>
+<li>Automatically retry failed scenarios. If it fails twice in a row we consider this a <strong>true failure</strong> and if it passes second time we class this as a <strong>flake failure</strong>. The author of these builds will be notified as such.</li>
+<li>Track all these failures with our new tracking api. This should help us identify sources of problems as well as give us the best priorities to tackle.</li>
+</ol>
+<h2 id="Insert-witty-ending"><a href="#Insert-witty-ending" class="headerlink" title="Insert witty ending"></a>Insert witty ending</h2><p>Way too tired for a full conclusion this week. As always feel free to reach out and chat about anything from above!</p>
+<blockquote>
+<p>Thanks for reading!<br>Chris</p>
+</blockquote>
+</div></article></div></main><footer><div class="copyright"><p>© 2015 - 2017 <a href="https://kalohq.github.io/infra-dx-blog">Infra DX Crew</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and a <a href="https://github.com/lystable/infra-dx-blog" target="_blank">heavily modified</a> <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

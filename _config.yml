@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://lystable.github.io/infra-dx-blog
+url: https://kalohq.github.io/infra-dx-blog
 root: /infra-dx-blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -75,4 +75,10 @@ archive_generator:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/lystable/infra-dx-blog.git
+  repo: https://github.com/kalohq/infra-dx-blog.git
+
+githubEmojis:
+  enable: true
+  className: github-emoji
+  unicode: false
+  localEmojis:
